@@ -14,20 +14,30 @@
 
   </div>
 
-{% for article in blog.articles %}
+{% for article in blog.articles | sort: 'published_at' %}
+  {% assign article_content_test = article.content | strip_html | replace: '&nbsp;', '' | strip %}
+  {% if article_content_test == '' and article.image %} 
+  <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}" x-hey>
+    <div class="w-full aspect-w-2 aspect-h-1 col-span-3">
+      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
+    </div>
+  </article> 
+  {% else %}
+
   <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}">
     {% if article.image %}
     <div class="w-full aspect-w-2 aspect-h-1 col-span-2">
-      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'large' }}">
+      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
     </div>
     {% endif %}
     <div class="content p-2 sm:p-10">
       <h2 class="text-2xl uppercase tracking-[0.3ch] pb-2">{{ article.title }}</h2>
       <div class="prose font-serif {%unless article.image%} sm:columns-3 {% endunless%}">
-          {{ article.content }}
+        {{article.content}}
       </div>
     </div>
   </article>
+  {%endif%}
 {% endfor %}
 
 {% if paginate.pages > 1 %}

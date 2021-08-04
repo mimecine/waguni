@@ -20,6 +20,7 @@
   {{ 'application.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
   <!-- <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script> -->
+  <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
@@ -45,7 +46,7 @@
 
       <div class="rule border border-0 border-b-2 border-dashed w-full"></div>
 
-      <div class="grid place-items-center h-20">
+      <div class="grid place-items-center h-20 pt-4">
           <a href="/" class="leading-none main-logo">
             <svg viewBox="0 0 171 27" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-current text-white h-[3rem] lg:h-[3rem]">
               <path d="M18.2339 1.23438L24.1217 16.0805L29.4525 1.23438H34.8139L25.2779 25.3874H23.0772L17.8293 12.5314L12.7608 25.3874H10.5601L0 1.23438H5.36639L11.5995 16.0805L17.4129 1.23438H18.2339Z"/>

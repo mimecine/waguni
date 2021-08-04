@@ -1,0 +1,14 @@
+{%liquid 
+    assign widths_arr = widths|split: ','
+    for w in widths_arr
+        assign liquid_w = w | append: 'x'
+        assign html_w = w | append: 'w'
+        assign w0 = w | plus: 0
+        if image.width > w0
+            unless forloop.first 
+                echo ', '
+            endunless
+            echo image.src | img_url: liquid_w | append: ' ' | append: html_w
+        endif
+    endfor
+%}

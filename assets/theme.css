@@ -989,6 +989,10 @@ footer {
   grid-column: span 2 / span 2;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .col-span-full {
   grid-column: 1 / -1;
 }
@@ -1021,6 +1025,10 @@ footer {
 
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.-ml-1 {
+  margin-left: -0.25rem;
 }
 
 .block {
@@ -1127,6 +1135,10 @@ footer {
   max-width: 24rem;
 }
 
+.max-w-screen-2xl {
+  max-width: 1536px;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -1205,19 +1217,14 @@ footer {
   justify-content: space-between;
 }
 
-.gap-0 {
-  grid-gap: 0px;
-  gap: 0px;
-}
-
 .gap-\[1px\] {
   grid-gap: 1px;
   gap: 1px;
 }
 
-.gap-2 {
-  grid-gap: 0.5rem;
-  gap: 0.5rem;
+.gap-0 {
+  grid-gap: 0px;
+  gap: 0px;
 }
 
 .self-center {
@@ -1318,6 +1325,11 @@ footer {
   background-color: var(--red,#DD343B);
 }
 
+.bg-wu-white {
+  background-color: #FFFFFF;
+  background-color: var(--white,#FFFFFF);
+}
+
 .bg-wu-green {
   background-color: #009444;
   background-color: var(--green,#009444);
@@ -1336,11 +1348,6 @@ footer {
 .bg-wu-black {
   background-color: #000000;
   background-color: var(--black,#000000);
-}
-
-.bg-wu-white {
-  background-color: #FFFFFF;
-  background-color: var(--white,#FFFFFF);
 }
 
 .bg-purple-400 {
@@ -1366,23 +1373,6 @@ footer {
 .bg-wu-gray {
   background-color: #BBBBBB;
   background-color: var(--gray,#BBBBBB);
-}
-
-.bg-current {
-  background-color: currentColor;
-}
-
-.\!bg-current {
-  background-color: currentColor !important;
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
-
-.bg-opacity-50 {
-  --tw-bg-opacity: 0.5;
 }
 
 .fill-current {
@@ -1487,6 +1477,11 @@ footer {
   padding-bottom: 0.5rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1524,10 +1519,6 @@ footer {
   text-align: right;
 }
 
-.align-top {
-  vertical-align: top;
-}
-
 .align-middle {
   vertical-align: middle;
 }
@@ -1559,6 +1550,11 @@ footer {
   line-height: 2rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
@@ -1569,19 +1565,14 @@ footer {
   line-height: 1rem;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
@@ -1608,20 +1599,16 @@ footer {
   line-height: 1;
 }
 
+.tracking-\[0\.3ch\] {
+  letter-spacing: 0.3ch;
+}
+
 .tracking-wide {
   letter-spacing: 0.025em;
 }
 
 .tracking-widest {
   letter-spacing: 0.1em;
-}
-
-.tracking-\[0\.5ch\] {
-  letter-spacing: 0.5ch;
-}
-
-.tracking-\[0\.3ch\] {
-  letter-spacing: 0.3ch;
 }
 
 .text-wu-red {
@@ -1679,24 +1666,8 @@ footer {
   color: rgba(249, 250, 251, var(--tw-text-opacity));
 }
 
-.text-current {
-  color: currentColor;
-}
-
 .opacity-75 {
   opacity: 0.75;
-}
-
-.opacity-50 {
-  opacity: 0.5;
-}
-
-.bg-blend-multiply {
-  background-blend-mode: multiply;
-}
-
-.mix-blend-difference {
-  mix-blend-mode: difference;
 }
 
 .mix-blend-luminosity {
@@ -1733,10 +1704,6 @@ footer {
   transition-property: border-radius;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
 }
 
 .duration-150 {
@@ -2188,6 +2155,10 @@ input[type="radio"].hidden+label {
   outline-offset: 2px;
 }
 
+.group:hover .group-hover\:hidden {
+  display: none;
+}
+
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
@@ -2317,8 +2288,20 @@ input[type="radio"].hidden+label {
     grid-column: span 2 / span 2;
   }
 
+  .md\:-ml-2 {
+    margin-left: -0.5rem;
+  }
+
+  .md\:block {
+    display: block;
+  }
+
   .md\:grid {
     display: grid;
+  }
+
+  .md\:hidden {
+    display: none;
   }
 
   .md\:h-80 {
@@ -2353,12 +2336,17 @@ input[type="radio"].hidden+label {
     padding: 5rem;
   }
 
+  .md\:p-6 {
+    padding: 1.5rem;
+  }
+
   .md\:p-0 {
     padding: 0px;
   }
 
-  .md\:p-6 {
-    padding: 1.5rem;
+  .md\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .md\:opacity-0 {
@@ -2376,6 +2364,14 @@ input[type="radio"].hidden+label {
   .md\:splash-bg-desktop {
     background-image: var(--splash-bg-desktop)
   };
+
+  .group:hover .group-hover\:md\:block {
+    display: block;
+  }
+
+  .group:hover .md\:group-hover\:block {
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
