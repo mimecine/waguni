@@ -1,0 +1,39 @@
+{% paginate blog.articles by 5 %}
+
+<section class="bg-wu-brown grid grid-flow-row text-wu-blue">
+  <div class="grid sm:grid-cols-2">
+    <div class="p-2 sm:p-10">
+      <h1 class="uppercase text-2xl tracking-[0.3ch] pb-2">{{ blog.title }}</h1>
+      <div class="blog-description font-serif text-3xl">
+      {% if pages[blog.handle]%}{{ pages[blog.handle].content }}{% endif %}
+      </div>
+    </div>
+    <div class="bg-wu-red aspect-h-3 aspect-w-3 sm:aspect-w-5 lg:aspect-w-6">
+
+    </div>    
+
+  </div>
+
+{% for article in blog.articles %}
+  <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}">
+    {% if article.image %}
+    <div class="w-full aspect-w-2 aspect-h-1 col-span-2">
+      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'large' }}">
+    </div>
+    {% endif %}
+    <div class="content p-2 sm:p-10">
+      <h2 class="text-2xl uppercase tracking-[0.3ch] pb-2">{{ article.title }}</h2>
+      <div class="prose font-serif {%unless article.image%} sm:columns-3 {% endunless%}">
+          {{ article.content }}
+      </div>
+    </div>
+  </article>
+{% endfor %}
+
+{% if paginate.pages > 1 %}
+  {{ paginate | default_pagination }}
+{% endif %}
+
+</section>
+
+{% endpaginate %}

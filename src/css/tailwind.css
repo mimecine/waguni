@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    header {}
+    section {}
+    aside {}
+    footer {}
+
+}
+
+@layer components {
+    /* example */
+
+  .tw-test {
+    & .slide {
+      @apply border relative max-h-full h-full w-full snap-start font-bold text-3xl border-wu-turquoise;
+      &:nth-child(1n) {
+        @apply bg-wu-yellow;
+      }
+      &:nth-child(2n) {
+        @apply bg-wu-green;
+      }
+    }
+  }
+  .btn {
+    @apply px-2 py-1 text-white bg-wu-green;
+    & .thing {
+        @apply text-green-400;
+    }
+  }
+}
+
+@layer utilities {
+    @variants responsive {
+        .scroll-snap-none {
+          scroll-snap-type: none;
+        }
+        .scroll-snap-x {
+          scroll-snap-type: x;
+        }
+        .scroll-snap-y {
+          scroll-snap-type: y;
+        }
+        .scroll-snap {
+
+        }
+        .grid-pancake {
+          grid-template-rows: auto 1fr auto;
+        }
+
+        .columns-3 {
+          columns: 3 auto;
+          column-gap: 1rem;
+        }
+
+        .aspect-landscape { aspect-ratio: 16/9;}
+        .aspect-portrait { aspect-ratio: 9/16;}
+        .aspect-square { aspect-ratio: 1;}
+
+        .splash-bg-desktop { @apply bg-cover bg-center; background-image: var(--splash-bg-desktop)};
+        .splash-bg-mobile { @apply bg-cover bg-center; background-image: var(--splash-bg-mobile)};
+      }   
+      nav .link-current { @apply bg-wu-white text-wu-nav }
+}
+
+/* non-purged stuff */
+
+.tag-color\:red { @apply bg-wu-red; }
+.tag-color\:green { @apply bg-wu-green; }
+.tag-color\:blue { @apply bg-wu-blue; }
+.tag-color\:yellow { @apply bg-wu-yellow; }
+.tag-color\:turquoise { @apply bg-wu-turquoise; }
+.tag-color\:brown { @apply bg-wu-brown; }
+.tag-color\:black { @apply bg-wu-black; }
+.tag-color\:white { @apply bg-wu-white; }
+
+.contrast-color\:red { @apply bg-wu-white; }
+.contrast-color\:green { @apply bg-wu-yellow; }
+.contrast-color\:blue { @apply bg-wu-black; }
+.contrast-color\:yellow { @apply bg-wu-blue; }
+.contrast-color\:turquoise { @apply bg-wu-red; }
+.contrast-color\:brown { @apply bg-wu-blue; }
+.contrast-color\:black { @apply bg-wu-turquoise; }
+.contrast-color\:white { @apply bg-wu-green; }
+
+.bg-red { @apply bg-wu-red; }
+.bg-green { @apply bg-wu-green; }
+.bg-blue { @apply bg-wu-blue; }
+.bg-yellow { @apply bg-wu-yellow; }
+.bg-turquoise { @apply bg-wu-turquoise; }
+.bg-brown { @apply bg-wu-brown; }
+.bg-black { @apply bg-wu-black; }
+.bg-white { @apply bg-wu-white; }
+
+.text-red { @apply text-wu-red; }
+.text-green { @apply text-wu-green; }
+.text-blue { @apply text-wu-blue; }
+.text-yellow { @apply text-wu-yellow; }
+.text-turquoise { @apply text-wu-turquoise; }
+.text-brown { @apply text-wu-brown; }
+.text-black { @apply text-wu-black; }
+.text-white { @apply text-wu-white; }
+
+.text-contrasting { @apply text-wu-white; }
+.bg-wu-white.text-contrasting, .bg-wu-white .text-contrasting { @apply text-wu-black; }
+
+.bg-contrasting { @apply bg-wu-white; }
+.text-wu-white.bg-contrasting, .text-wu-white .bg-contrasting { @apply bg-wu-black; }
+
+article:nth-child(odd) .content {
+  @apply sm:order-first;
+}
+
+
+input[type="radio"].hidden:checked+label { @apply border-b border-dashed border-current; }
+input[type="radio"].hidden+label { @apply cursor-pointer; }
+[x-cloak] {display:none !important}

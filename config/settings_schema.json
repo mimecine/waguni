@@ -1,0 +1,44 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://github.com/Shopify/themekit",
+    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name":"Fonts",
+    "settings":[
+      {
+        "label": "Body Font",
+        "id": "body_font",
+        "type": "font_picker",
+        "default": "helvetica_n4"
+      }
+    ]
+  },
+  {
+    "name":"Colors",
+    "settings":[
+      {"label": "WU Nav","id": "color_nav","type": "color","default": "#0A6BFF"},
+      {"label": "Red","id": "color_red","type": "color","default": "#DD343B"},
+      {"label": "Green","id": "color_green","type": "color","default": "#009444"},
+      {"label": "Blue","id": "color_blue","type": "color","default": "#0055D6"},
+      {"label": "Yellow","id": "color_yellow","type": "color","default": "#FBCC03"},
+      {"label": "Turquoise","id": "color_turquoise","type": "color","default": "#1BBDBD"},
+      {"label": "Brown","id": "color_brown","type": "color","default": "#D6C8AB"},
+      {"label": "Gray","id": "color_gray","type": "color","default": "#BBBBBB"},
+      {"label": "White","id": "color_white","type": "color","default": "#FFFFFF"},
+      {"label": "Black","id": "color_black","type": "color","default": "#000000"}  
+
+    ]
+  },
+  {
+    "name": "Images",
+    "settings":[
+      {"label":"Desktop Splash","id":"desktop_splash","type":"image_picker"},
+      {"label":"Mobile Splash","id":"mobile_splash","type":"image_picker"}
+    ]
+  }
+]

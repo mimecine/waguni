@@ -1,0 +1,28 @@
+{
+  "name": "wu-mr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -k npm:watch-*",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-tailwind": "tailwindcss -m --postcss -i ./src/css/tailwind.css -o ./assets/theme.css --watch",
+    "watch-theme": "theme watch --allow-live",
+    "watch-tailwind": "tailwindcss --postcss -i ./src/css/tailwind.css -o ./assets/theme.css --watch",
+    "open-theme": "theme open --hidepb"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/forms": "^0.3.3",
+    "alpinejs": "^3.2.2",
+    "autoprefixer": "^10.3.1",
+    "concurrently": "^6.2.0",
+    "postcss": "^8.3.5",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.2.4",
+    "tailwindcss-scroll-snap": "^1.1.0"
+  }
+}
