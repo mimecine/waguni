@@ -1,4 +1,4 @@
-<section class="grid md:grid-cols-3 2xl:grid-cols-4 max-w-screen-2xl m-auto gap-[1px] bg-wu-white">
+<section class="grid md:grid-cols-3 2xl:grid-cols-4 m-auto gap-[1px] bg-wu-white">
   {% for product in collection.products limit:48 %}
     {% assign remainder = forloop.length | modulo: 3 %}
     {% assign base_col = product.handle|split:"-"|last%}
