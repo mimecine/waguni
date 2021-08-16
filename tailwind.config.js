@@ -13,9 +13,10 @@ module.exports = {
     extend: {
       colors:{
         'wu-nav':'var(--nav,#0055FF)',
+        'wu-text':'var(--text,#FFFFFF)',
         'wu-red':'var(--red,#DD343B)',
         'wu-green':'var(--green,#009444)',
-        'wu-blue':'var(--blue,#0055D6)',
+        'wu-blue':'var(--blue,#2000CD)',
         'wu-yellow':'var(--yellow,#FBCC03)',
         'wu-turquoise':'var(--turquoise,#1BBDBD)',
         'wu-brown':'var(--brown,#D6C8AB)',

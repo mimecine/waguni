@@ -34,9 +34,12 @@
   <div class="md:col-span-2 order-1 md:order-2 relative">
     <div class="sm:h-[calc(100vh-3rem)] overscroll-y-contain overflow-y-scroll xsnap xsnap-y flex flex-col">
     {% for image in product.images %}{% unless image.src contains "_front."  or image.src contains "_bycol." %}
-      <div class="w-full max-h-full flex-shrink-0 self-center justify-self-center {% cycle 'bg': 'xbg-wu-blue','xbg-wu-red','xbg-wu-green','xbg-wu-yellow' %} contrast-color:{{base_col}}">
-        <!-- <img class="{% cycle 'object-right-bottom', 'object-left-top', 'object-center', 'object-right-top','object-left-bottom' %} {%if forloop.first%}object-center object-cover p-0{% else %} object-contain p-10 md:p-20{% endif %}" src="{{ image.src | img_url: '2048x2048' }}" alt="{{ image.alt | escape }}"> -->
-        <img class="object-contain p-8 md:p-8 w-auto max-h-full m-auto" src="{{ image.src | img_url: '2048x2048' }}" width="{{image.width}}" height="{{image.height}}" alt="{{ image.alt | escape }}">
+      <div class="w-full max-h-full flex-shrink-0 self-center justify-self-center contrast-color:{{base_col}}">
+        <img 
+          class="object-contain p-8 md:p-8 w-auto max-h-full m-auto" 
+          srcset="{% render 'attr-srcset' , image: image, widths:"400,800,1200,1600,3200" %}"  
+          sizes="(min-width: 768px) 800px, 95vw" 
+          src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{image.height}}" alt="{{ image.alt | escape }}">
       </div>
     {% endunless %}{% endfor %}
     </div>
@@ -80,12 +83,16 @@
       {% endif %}
     {% endfor %}
       </p>
-      <div x-data="sizemodal()">
+
+      <div x-data="sizeModal()">
         <p class="py-2 -ml-1 md:-ml-2">
           <button @keyup.escape.window="open=false" @click.prevent="open = true" class="{% unless product.metafields.wagner.size_chart %}hidden {%endunless%}rounded-full px-1 md:px-2 py-1 border text-xs font-normal">Size Chart</button>
         </p>
-        <div x-cloak x-show="open" @scroll.window.stop="true" class="absolute top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0,0,0,.0);">
-          <div @click.outside="open=false" class="text-left bg-wu-brown h-auto p-4 md:max-w-xl md:p-6 lg:p-8 shadow-xl mx-2 md:mx0 font-serif text-wu-blue">
+
+        <div x-cloak x-show="open" @scroll.window.stop="true" 
+        class="fixed inset-0 flex items-center justify-center" style="background-color: rgba(0,0,0,.0);">
+
+          <div @click.outside="open=false" class="text-left bg-wu-brown isolate overflow-scroll h-full w-full md:h-auto p-4 md:max-w-xl md:p-6 lg:p-8 font-serif text-wu-blue">
             <div class="flex justify-between align-text-top pb-4">
               <h1 class="font-sans text-4xl uppercase tracking-widest">Size chart</h1>
               <button @click.prevent="open = false">Close</button>
@@ -119,8 +126,7 @@
       <div class="py-2">
         <p>
           <span>{{ current_variant.price | money }}</span>
-          <!-- <button class="xbtn pointer-events-none text-contrasting rounded-full px-6 mr-4  {{bgclass}}" xstyle="xbackground-color:var(--base-col)">{{ current_variant.price | money }}</button> -->
-          <button class="xbtn bg-contrasting rounded-full mx-6 px-6 border {{txclass}}" xstyle="color:var(--base-col,'black')" type="submit" name="add" id="AddToCart">Add to cart</button>
+          <button x-data @click.prevent="$store.Cart.addItemFromForm($el.form) && $nextTick(()=>{$dispatch('toggle-cart-drawer')})" class="xbtn bg-contrasting rounded-full mx-6 px-6 border {{txclass}}" type="submit" name="add" id="AddToCart">Add to cart</button>
         </p>
       </div>
     </form>

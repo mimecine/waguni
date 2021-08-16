@@ -21,10 +21,11 @@
   {
     "name":"Colors",
     "settings":[
-      {"label": "WU Nav","id": "color_nav","type": "color","default": "#0A6BFF"},
+      {"label": "WU Main","id": "color_nav","type": "color","default": "#0A6BFF"},
+      {"label": "WU Text","id": "color_text","type": "color","default": "#FFFFFF"},
       {"label": "Red","id": "color_red","type": "color","default": "#DD343B"},
       {"label": "Green","id": "color_green","type": "color","default": "#009444"},
-      {"label": "Blue","id": "color_blue","type": "color","default": "#0055D6"},
+      {"label": "Blue","id": "color_blue","type": "color","default": "#2000CD"},
       {"label": "Yellow","id": "color_yellow","type": "color","default": "#FBCC03"},
       {"label": "Turquoise","id": "color_turquoise","type": "color","default": "#1BBDBD"},
       {"label": "Brown","id": "color_brown","type": "color","default": "#D6C8AB"},

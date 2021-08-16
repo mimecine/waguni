@@ -79,10 +79,10 @@
 
       <div class="grid {{bgclass}} relative group">
       {%liquid 
-        assign theimage = product.featured_image
+        assign front_image = product.featured_image
         for image in product.images 
           if image.src contains "_front"
-            assign theimage = image
+            assign front_image = image
             break
           endif
         endfor
@@ -91,13 +91,24 @@
       {% assign plain_title = product.title | remove: title_color | trim %}
     
       <a href="{{ product.url | within: collection }}" class="w-full block relative">
-        <div class=" xaspect-h-1 xaspect-w-1 tag-{{product.tags | join: ' tag-'}}">
-          <img class="hidden md:block group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ theimage.src | img_url: '800x' }}" alt="{{ theimage.alt | escape }}" loading="lazy">
+
+        <div class="">
+          <img class="block md:group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" 
+            srcset="{% render 'attr-srcset' with product.featured_image as image, widths:'400,800,1200' %}"
+            sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
+          >
+          <img class="hidden group-hover:block w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" loading="lazy">
+        </div>
+
+        <!-- <div class=" xaspect-h-1 xaspect-w-1 tag-{{product.tags | join: ' tag-'}}">
+          <img class="hidden md:block group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" loading="lazy">
           <img class="block md:hidden md:group-hover:block w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.featured_image.alt | escape }}" xloading="lazy" 
             srcset="{% render 'attr-srcset' with product.featured_image as image, widths:'400,800,1200' %}"
             sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
           >
-        </div>
+        </div> -->
+
+
       </a>
       <!-- <a class="transition-opacity md:opacity-0 group-hover:opacity-100 font-bold text-center absolute w-full bottom-0 p-4 block {{bgclass}} {{txclass}}" href="{{ product.url | within: collection }}">{{ product.title }}</a> -->
       <div class="

@@ -62,7 +62,7 @@
         .splash-bg-desktop { @apply bg-cover bg-center; background-image: var(--splash-bg-desktop)};
         .splash-bg-mobile { @apply bg-cover bg-center; background-image: var(--splash-bg-mobile)};
       }   
-      nav .link-current { @apply bg-wu-white text-wu-nav }
+      nav .link-current { @apply bg-wu-text text-wu-nav }
 }
 
 /* non-purged stuff */
@@ -108,6 +108,11 @@
 
 .bg-contrasting { @apply bg-wu-white; }
 .text-wu-white.bg-contrasting, .text-wu-white .bg-contrasting { @apply bg-wu-black; }
+
+
+.card-index-2 { @apply md:col-span-2 md:w-1/2 md:place-self-end }
+.card-index-5 { @apply md:col-span-2 md:w-1/2 }
+.card-index-6 { @apply md:col-span-2 md:w-1/2 md:place-self-end }
 
 article:nth-child(odd) .content {
   @apply sm:order-first;

@@ -1,10 +1,11 @@
 
 :root {
-    --main-bg-color: {{ settings.main_bg_color | default:"var(--blue)" }};
+    --main-bg-color: {{ settings.main_bg_color | default:"var(--nav)" }};
+    --text: {{ settings.color_text | default:"var(--white)" }};
     --nav: {{ settings.color_nav | default:"#0055D6" }};
     --red: {{ settings.color_red | default:"#DD343B" }};
     --green: {{ settings.color_green | default:"#009444" }};
-    --blue: {{ settings.color_blue | default:"#0A6BFF" }};
+    --blue: {{ settings.color_blue | default:"#2000CD" }};
     --yellow: {{ settings.color_yellow | default:"#FBCC03" }};
     --turquoise: {{ settings.color_turquoise | default:"#1BBDBD" }};
     --brown: {{ settings.color_brown | default:"#D6C8AB" }};

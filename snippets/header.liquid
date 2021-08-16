@@ -1,18 +1,18 @@
-<header class="bg-wu-nav sticky z-10 top-0 w-full text-white text-xl uppercase h-[3rem]" x-data="{open:false}">
+<header class="bg-wu-nav sticky z-10 top-0 w-full text-wu-text text-xl uppercase h-[3rem]" x-data="{open:false}">
     <div class="grid grid-cols-2 sm:grid-cols-3 h-full place-items-center">
     
       <nav class="hidden sm:block justify-self-start px-8 h-full">
           <ul class="menu flex items-center h-full">
             {% for link in linklists.main-menu-left.links %}
               <li class="inline n1 sm:px-4 h-full grid place-items-center">
-                <a href="{{ link.url }}" class="border-0 hover:border-b border-wu-white border-dashed">{{ link.title }}</a>
+                <a href="{{ link.url }}" class="border-0 hover:border-b border-wu-text border-dashed">{{ link.title }}</a>
               </li>
             {% endfor %}
           </ul>
       </nav>
       <div class="flex items-center justify-self-start sm:justify-self-center px-2">
           <a href="/" class="leading-none main-logo">
-              <svg viewBox="0 0 171 27" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-current text-white h-[26px] lg:h-[26px]">
+              <svg viewBox="0 0 171 27" fill="none" xmlns="http://www.w3.org/2000/svg"  class="fill-current text-wu-text h-[26px] lg:h-[26px]">
                 <path d="M18.2339 1.23438L24.1217 16.0805L29.4525 1.23438H34.8139L25.2779 25.3874H23.0772L17.8293 12.5314L12.7608 25.3874H10.5601L0 1.23438H5.36639L11.5995 16.0805L17.4129 1.23438H18.2339Z"/>
                 <path d="M90.0709 11.6615C90.0709 15.0297 89.8102 16.4786 88.952 18.5788C87.8719 21.077 85.6356 23.3598 82.9897 24.664C81.1631 25.5685 79.1875 26.0044 76.8378 26.0044C69.0862 26.0044 63.1967 20.536 63.1967 13.3308C63.1837 11.6862 63.5061 10.0554 64.1454 8.53254C64.7846 7.00965 65.7279 5.62483 66.921 4.45802C69.418 2.06837 73.1456 0.621094 76.7227 0.621094C79.6006 0.621094 83.1725 1.70491 85.1464 3.15547C85.7067 3.55347 86.1536 3.98766 87.1609 5.00075L83.4366 8.07786C82.9007 7.51201 82.3279 6.98024 81.7217 6.48585C80.3818 5.43312 78.7048 4.8693 76.9817 4.8922C75.8277 4.89197 74.685 5.11334 73.6193 5.54356C72.5537 5.97379 71.5861 6.6044 70.7721 7.39915C69.9581 8.19389 69.3139 9.13708 68.8764 10.1745C68.4389 11.212 68.2168 12.3232 68.2228 13.4443C68.2214 14.5397 68.4436 15.6244 68.8766 16.6358C69.3096 17.6472 69.9448 18.5651 70.7453 19.3365C71.5459 20.1078 72.496 20.7172 73.5406 21.1295C74.5852 21.5417 75.7036 21.7486 76.831 21.7382C78.1771 21.7442 79.5033 21.4226 80.6885 20.8026C81.8737 20.1827 82.8802 19.2841 83.616 18.1891C84.1002 17.5312 84.2932 17.102 84.6605 15.8356H78.2107L79.9628 11.6697L90.0709 11.6615Z"/>
                 <path d="M102.529 25.3874H97.645V1.23438H98.9858L113.599 15.4687V1.23438H118.481V25.3874H116.918L102.529 11.2633V25.3874Z"/>
@@ -26,15 +26,17 @@
           <ul class="menu flex items-center h-full">
             {% for link in linklists.main-menu-right.links %}
               <li class="inline n1 sm:px-4 h-full grid place-items-center">
-                <a href="{{ link.url }}" class="border-0 hover:border-b border-wu-white border-dashed">{{ link.title }}</a></li>
+                <a href="{{ link.url }}" class="border-0 hover:border-b border-wu-text border-dashed">{{ link.title }}</a></li>
             {% endfor %}
-              <li class="inline sm:px-4 h-full grid place-items-center">
+              <li class="inline sm:px-4 h-full grid place-items-center" x-data="{usedKeyboard: false, open: false}" x-show="$store.Cart.state.item_count > 0" :class="{'xlink-current':open}">
                 <button
-                x-data="{usedKeyboard: false}"
+                x-cloak
+                class="border-0 hover:border-b border-wu-text border-dashed"
                 @keydown.window.tab="usedKeyboard = true"
-                @click="$dispatch('open-menu', { open: true })"
-                :class="{'focus:outline-none': !usedKeyboard}">
-                C
+                @click="open =! open; $dispatch('open-menu', { open : open })"
+                :class="{'focus:outline-none': !usedKeyboard, 'border-b': open}"
+                >
+                  CART (<span x-text="$store.Cart.state.item_count"></span>)
               </button>
           
               </li>
@@ -56,9 +58,11 @@
           <button class="p-2"
           x-data="{usedKeyboard: false}"
           @keydown.window.tab="usedKeyboard = true"
-          @click="$dispatch('open-menu', { open: true })"
-          :class="{'focus:outline-none': !usedKeyboard}">
-          C
+          @click="$dispatch('open-menu', { open: true }); open = false"
+          :class="{'focus:outline-none': !usedKeyboard}"                
+          x-show="$store.Cart.state.item_count > 0">
+          CART (<span x-text="$store.Cart.state.item_count"></span>)
+
         </button>
       </ul>    
   </div>

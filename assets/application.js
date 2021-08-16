@@ -7,43 +7,6 @@ window.addEventListener('DOMContentLoaded',()=>{
 })
 
 document.addEventListener('alpine:init', () => {
-    Alpine.directive('xmintersect', (el, { expression, modifiers }, { evaluateLater, cleanup }) => {
-        let evaluate = evaluateLater(expression)
-
-        let observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if ( modifiers.includes('in') && entry.isIntersecting && !entry._i) {
-                    entry._i = true;
-                    console.log(`In on ${entry.target.dataset.handle}`);
-                    evaluate();
-                }
-                else if ( modifiers.includes('out') && !entry.isIntersecting ) {
-                    entry._i = false;
-                    console.log(`Out on ${entry.target.dataset.handle}`);
-                    evaluate();
-                }
-                else {
-
-                //    if (entry.intersectionRatio === 0) return
-
-                //    evaluate()
-      
-                }
-
-
-
-                modifiers.includes('once') && observer.disconnect()
-            })
-        })
-
-        observer.observe(el)
-
-        cleanup(() => {
-            observer.disconnect()
-        })
-    })
-
-
 
     Alpine.directive('mintersect', (el, { expression, modifiers }, { evaluateLater, cleanup }) => {
         let evaluate = evaluateLater(expression)
@@ -54,12 +17,10 @@ document.addEventListener('alpine:init', () => {
             entries.forEach(entry => {
                 if ( modifiers.includes('in') && entry.intersectionRatio >= 0.5 && !entry._i) {
                     entry._i = true;
-                    console.log(`In on ${entry.target.dataset.handle}`);
                     evaluate();
                 }
                 else if ( modifiers.includes('out') && entry.intersectionRatio < 0.5 ) {
                     entry._i = false;
-                    console.log(`Out on ${entry.target.dataset.handle}`);
                     evaluate();
                 }
                 else {
@@ -82,14 +43,74 @@ document.addEventListener('alpine:init', () => {
             observer.disconnect()
         })
     })
+
+    Alpine.store('Cart',{
+        state: {},
+        items: [],
+        isLoading: false,
+        async addItemFromForm(form){
+            this.isLoading = true;
+            try {
+                await Shopify.theme.cart.addItemFromForm(form);
+            } catch(e) {
+                this.isLoading = false;
+                return false;
+            }
+            this.init();
+        },
+        async addItem(id){
+            this.isLoading = true;
+            await Shopify.theme.cart.addItem(id);
+            this.init();
+        },
+        async setQuantity(key,quantity){
+            //this.state = await Shopify.theme.cart.updateItem(key, {quantity} );
+            //this.items = this.state.items;
+            this.isLoading = true;
+            try {
+                this.init(await Shopify.theme.cart.updateItem(key, {quantity} ));
+            } catch (e) {
+                this.isLoading = false;
+                return false;
+            }
+        },
+        async removeItem(key){
+            //this.state = await Shopify.theme.cart.removeItem(key);
+            //this.items = this.state.items;
+            this.isLoading = true;
+            this.init(await Shopify.theme.cart.removeItem(key));
+        },
+        async init(state){
+            this.isLoading = true;
+            this.state = state || await Shopify.theme.cart.getState();
+
+            for(item of this.state.items){
+                product = await getProductJson(item.handle);
+                let img = product.media.find( m => { return m.src.indexOf('_front.') != -1})
+                if(img){ item.image = img.src };
+            }
+
+
+            console.log(this.state.items[0]?.image)
+            this.items = this.state.items;
+            this.isLoading = false;
+
+        }
+    })
 })
 
+async function getProductJson(handle) {
+    res =  await fetch('/products/' + handle + '.js');
+    return await res.json();
+}
 
-function slideout() {
+
+function cartDrawer() {
 	return {
 		open: false,
 		usedKeyboard: false,
-		init() {
+        
+		async init() {
 			this.$watch('open', value => {
 				value && this.$refs.closeButton.focus()
 				this.toggleOverlay()
@@ -102,19 +123,23 @@ function slideout() {
 	}
 }
 
-function sizemodal(){
+function sizeModal(){
 	return {
 		open: false,
 		usedKeyboard: false,
 		init() {
 			this.$watch('open', value => {
-				// value && this.$refs.closeButton.focus()
+				//value && this.$refs.closeButton.focus()
 				this.toggleOverlay()
 			})
 			this.toggleOverlay()
 		},
 		toggleOverlay() {
-			// document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden')
+			 document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden')
 		}
 	}   
+}
+
+function usd(cents){
+    return '$'+String(cents).replace(/(\d\d$)/,'.$1').replace(/\.00$/,'');
 }
