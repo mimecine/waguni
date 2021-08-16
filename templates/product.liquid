@@ -37,8 +37,8 @@
       <div class="w-full max-h-full flex-shrink-0 self-center justify-self-center contrast-color:{{base_col}}">
         <img 
           class="object-contain p-8 md:p-8 w-auto max-h-full m-auto" 
-          srcset="{% render 'attr-srcset' , image: image, widths:"400,800,1200,1600,3200" %}"  
-          sizes="(min-width: 768px) 800px, 95vw" 
+          srcset="{% render 'attr-srcset' , image: image, widths:"400,600,800,1000,1200,1600,2400,3200" %}"  
+          sizes="(min-width: 768px) 60vw, 95vw" 
           src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{image.height}}" alt="{{ image.alt | escape }}">
       </div>
     {% endunless %}{% endfor %}
