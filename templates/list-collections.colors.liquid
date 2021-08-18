@@ -24,7 +24,7 @@
         endif
       endfor
     %}
-      <div class="relative w-full p-4 odd:pl-12 odd:md:pl-4 even:pr-12 even:md:pr-4  card-index-{{ forloop.index0|modulo:7 }}" x-data="{vis:false}">
+      <div class="relative w-full p-4 odd:pl-12 even:pr-12 md:odd:pl-4 md:even:pr-4  card-index-{{ forloop.index0|modulo:7 }}" x-data="{vis:false}">
         <div class="absolute top-1/2" x-mintersect.in="vis=true" x-mintersect.out="vis=false" data-handle="{{product.handle}}"></div>
 
         <div class="w-full grid place-items-center image">

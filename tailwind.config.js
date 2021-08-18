@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   mode:'jit',
   purge: [
-    '*/safelist.txt',
+    './src/css/tw-safelist.txt',
     './*.html',
     './**/*.liquid',
     './assets/**/*.js',

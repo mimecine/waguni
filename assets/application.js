@@ -64,8 +64,6 @@ document.addEventListener('alpine:init', () => {
             this.init();
         },
         async setQuantity(key,quantity){
-            //this.state = await Shopify.theme.cart.updateItem(key, {quantity} );
-            //this.items = this.state.items;
             this.isLoading = true;
             try {
                 this.init(await Shopify.theme.cart.updateItem(key, {quantity} ));
@@ -75,8 +73,6 @@ document.addEventListener('alpine:init', () => {
             }
         },
         async removeItem(key){
-            //this.state = await Shopify.theme.cart.removeItem(key);
-            //this.items = this.state.items;
             this.isLoading = true;
             this.init(await Shopify.theme.cart.removeItem(key));
         },

@@ -46,7 +46,7 @@
   </div>
   
 
-  <div class="md:col-span-1 order-2 md:order-1 {{bgclass}} p-2 md:p-4 text-white text-contrasting grid place-content-center grid-cols-1">
+  <div class="md:col-span-1 order-2 md:order-1 {{bgclass}} p-4 md:p-8 text-white text-contrasting grid place-content-center grid-cols-1">
     {% assign title_color = product.title | split: " " | last %}
     {% assign plain_title = product.title | remove: title_color | trim %}
     <h1 class="text-2xl tracking-wide mb-4">{{ plain_title }}</h1>

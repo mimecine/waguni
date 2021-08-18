@@ -5,7 +5,7 @@
 	@keydown.window.tab="usedKeyboard = true"
 	@keydown.window.escape="open = false">
 	<div
-		x-show.transition.opacity.duration.250="open"
+		x-show.transition.opacity.duration.500="open"
 		@click="open = false"
 		class="fixed inset-0 bg-wu-black opacity-50"></div>
 	<div
@@ -30,7 +30,7 @@
 		</div>
 
 		<div x-cloak x-show="$store.Cart.items.length == 0 && $store.Cart.isLoading == false" class="w-full h-full grid place-items-center text-4xl">
-			<button @click="open = false">Continue shopping</button>
+			<button @click="open = false">Nothing yet!</button>
 		</div>
 
 
