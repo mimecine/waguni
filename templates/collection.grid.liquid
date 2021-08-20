@@ -1,7 +1,7 @@
 <section class="grid md:grid-cols-3 2xl:grid-cols-4 m-auto gap-[1px] bg-wu-white">
-  {% for product in collection.products limit:48 %}
+  {% for product in collection.products limit: 48 %}
     {% assign remainder = forloop.length | modulo: 3 %}
-    {% assign base_col = product.handle|split:"-"|last%}
+    {% assign base_col = product.handle | split: "-" | last %}
     {% liquid 
       assign bgclass = "bg-wu-blue"
       assign txinv = "text-wu-white"
@@ -77,7 +77,7 @@
       %}
   
 
-      <div class="grid {{bgclass}} relative group">
+      <div class="grid {{ bgclass }} relative group">
       {%liquid 
         assign front_image = product.featured_image
         for image in product.images 
@@ -88,34 +88,34 @@
         endfor
       %}
       {% assign title_color = product.title | split: " " | last %}
-      {% assign plain_title = product.title | remove: title_color | trim %}
+      {% assign plain_title = product.title | remove: title_color | strip %}
     
       <a href="{{ product.url | within: collection }}" class="w-full block relative">
 
         <div class="">
           <img class="block md:group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" 
-            srcset="{% render 'attr-srcset' with product.featured_image as image, widths:'400,800,1200' %}"
+            srcset="{% render 'attr-srcset' with product.featured_image as image, widths: '400,800,1200' %}"
             sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
           >
           <img class="hidden group-hover:block w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" loading="lazy">
         </div>
 
-        <!-- <div class=" xaspect-h-1 xaspect-w-1 tag-{{product.tags | join: ' tag-'}}">
+        <!-- <div class=" xaspect-h-1 xaspect-w-1 tag-{{ product.tags | join: ' tag-' }}">
           <img class="hidden md:block group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" loading="lazy">
           <img class="block md:hidden md:group-hover:block w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.featured_image.alt | escape }}" xloading="lazy" 
-            srcset="{% render 'attr-srcset' with product.featured_image as image, widths:'400,800,1200' %}"
+            srcset="{% render 'attr-srcset' with product.featured_image as image, widths: '400,800,1200' %}"
             sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
           >
         </div> -->
 
 
       </a>
-      <!-- <a class="transition-opacity md:opacity-0 group-hover:opacity-100 font-bold text-center absolute w-full bottom-0 p-4 block {{bgclass}} {{txclass}}" href="{{ product.url | within: collection }}">{{ product.title }}</a> -->
+      <!-- <a class="transition-opacity md:opacity-0 group-hover:opacity-100 font-bold text-center absolute w-full bottom-0 p-4 block {{ bgclass }} {{txclass}}" href="{{ product.url | within: collection }}">{{ product.title }}</a> -->
       <div class="
         transition-opacity 
         md:opacity-0 group-hover:opacity-100 
         font-bold text-center 
-        absolute w-full bottom-0 p-4 {{txclass}} bg-{{base_col}}">
+        absolute w-full bottom-0 p-4 {{ txclass }} bg-{{ base_col }}">
         <a class="border-0 border-b border-current border-dashed pb-2" href="{{ product.url | within: collection }}">{{ plain_title }}</a>
       </div>
   

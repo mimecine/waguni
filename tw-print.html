@@ -16,10 +16,12 @@
 }        
     </style>
 </head>
-<body class="font-sans p-0 m-0">
-    <main class="grid grid-cols-3 grid-rows-3 p-[0.5in] h-[11in] w-[8.5in]" x-data>
+<body class="font-sans p-0 m-0" x-data>
+    <template x-for="j in 3">
+
+    <section class="grid grid-cols-3 grid-rows-3 p-[0.5in] h-[11in] w-[8.5in] " x-data style="page-break-after: always;">
         <template x-for="i in 9">
-            <div class="bg-white text-[5pt] p-2" style="font-family: 'Courier New', Courier, monospace;">
+            <div class="bg-white text-[5pt] p-2 border border-current" style="font-family: 'Courier New', Courier, monospace;">
                 <h1 class="text-[6pt] font-bold uppercase" style="font-family: Helvetica, sans-serif;">Title of The Thing</h1>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, dolorem molestias quidem facilis deserunt accusantium tenetur ipsa officiis, tempora consequatur totam placeat praesentium laudantium laboriosam maxime delectus necessitatibus optio! Ab!
                 Reiciendis, perspiciatis obcaecati labore nulla, quos quidem rem quam repellat beatae veniam, ex illo qui iste aliquid necessitatibus nihil? Enim a animi harum recusandae sapiente non atque laboriosam veritatis minus!
@@ -28,6 +30,8 @@
                 Voluptates labore quae minima necessitatibus, odit reiciendis libero, voluptatum recusandae molestiae praesentium veritatis fugit perspiciatis totam autem enim, laboriosam architecto cumque vel nemo itaque! Animi numquam impedit neque veritatis in!
             </div>
         </template>
-    </main>
+    </section>
+
+    </template>
 </body>
 </html>
