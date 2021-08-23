@@ -33,6 +33,7 @@
       endcase
       %}
 
+      {% comment %}
       {% liquid 
         assign bgclass = "bg-wu-blue"
         assign txinv = "text-wu-white"
@@ -63,9 +64,9 @@
           assign txclass = "text-wu-white"
         endcase
         %}
-
+        {% endcomment %}
         {% liquid 
-          assign bgclass = "bg-wu-blue"
+          assign xx_bgclass = "bg-wu-blue"
           assign txinv = "text-wu-white"
           assign txclass = "text-wu-white"
 
@@ -77,7 +78,7 @@
       %}
   
 
-      <div class="grid {{ bgclass }} relative group">
+      <div class="grid {{ bgclass }} relative group px-[40px] py-[25px] hover:px-0 hover:py-0">
       {%liquid 
         assign front_image = product.featured_image
         for image in product.images 
@@ -123,7 +124,10 @@
   {% endfor %}
   <!-- padding for justification -->
   <div class="grid bg-wu-green"></div>
-  <div class="grid bg-wu-black"></div>
+  <div class="grid bg-wu-blue"></div>
+  <div class="grid bg-wu-red"></div>
+  <div class="grid bg-wu-green"></div>
+  <div class="grid bg-wu-blue"></div>
   <div class="grid bg-wu-red"></div>
 
 {% unless remainder == 0 %}

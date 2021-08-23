@@ -1643,6 +1643,16 @@ footer {
   padding-bottom: 1rem;
 }
 
+.px-\[40px\] {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.py-\[25px\] {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
 .pt-20 {
   padding-top: 5rem;
 }
@@ -2213,6 +2223,16 @@ input[type="radio"].hidden+label {
 .hover\:bg-wu-white:hover {
   background-color: #FFFFFF;
   background-color: var(--white,#FFFFFF);
+}
+
+.hover\:px-0:hover {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.hover\:py-0:hover {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .hover\:text-wu-nav:hover {
