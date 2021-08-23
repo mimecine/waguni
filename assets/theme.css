@@ -1002,6 +1002,16 @@ footer {
   margin-right: 0.5rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -1095,6 +1105,14 @@ footer {
   height: auto;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
 .h-\[60px\] {
   height: 60px;
 }
@@ -1139,6 +1157,10 @@ footer {
   width: 100vw;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
 .w-40 {
   width: 10rem;
 }
@@ -1161,6 +1183,10 @@ footer {
 
 .max-w-lg {
   max-width: 32rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .flex-auto {
@@ -1281,6 +1307,11 @@ footer {
   gap: 0px;
 }
 
+.gap-\[2px\] {
+  grid-gap: 2px;
+  gap: 2px;
+}
+
 .divide-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1311,6 +1342,10 @@ footer {
   justify-self: center;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1335,12 +1370,12 @@ footer {
   border-radius: 1rem;
 }
 
-.rounded-3xl {
-  border-radius: 1.5rem;
-}
-
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 
 .rounded-wu {
@@ -1405,6 +1440,11 @@ footer {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
+
 .bg-wu-black {
   background-color: #000000;
   background-color: var(--black,#000000);
@@ -1463,6 +1503,18 @@ footer {
 .bg-wu-gray {
   background-color: #BBBBBB;
   background-color: var(--gray,#BBBBBB);
+}
+
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
+}
+
+.bg-opacity-25 {
+  --tw-bg-opacity: 0.25;
+}
+
+.bg-opacity-100 {
+  --tw-bg-opacity: 1;
 }
 
 .fill-current {
@@ -1821,6 +1873,17 @@ footer {
   --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), var(--tw-shadow);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
+}
+
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .transition {

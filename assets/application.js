@@ -2,17 +2,17 @@
 window.addEventListener('DOMContentLoaded',()=>{
     document.querySelectorAll(`nav a[href$='${location.pathname+location.search}']`)
         .forEach(el=>{
-            el.parentNode.classList.add('link-current')
-        })
-})
+            el.parentNode.classList.add('link-current');
+        });
+});
 
 document.addEventListener('alpine:init', () => {
 
     Alpine.directive('mintersect', (el, { expression, modifiers }, { evaluateLater, cleanup }) => {
-        let evaluate = evaluateLater(expression)
+        let evaluate = evaluateLater(expression);
         let options = {
             rootMargin: '-30% 0px'
-        }
+        };
         let observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if ( modifiers.includes('in') && entry.intersectionRatio >= 0.5 && !entry._i) {
@@ -33,16 +33,16 @@ document.addEventListener('alpine:init', () => {
 
 
 
-                modifiers.includes('once') && observer.disconnect()
-            })
-        },options)
+                modifiers.includes('once') && observer.disconnect();
+            });
+        },options);
 
-        observer.observe(el)
+        observer.observe(el);
 
         cleanup(() => {
-            observer.disconnect()
-        })
-    })
+            observer.disconnect();
+        });
+    });
 
     Alpine.store('Cart',{
         state: {},
@@ -80,20 +80,19 @@ document.addEventListener('alpine:init', () => {
             this.isLoading = true;
             this.state = state || await Shopify.theme.cart.getState();
 
-            for(item of this.state.items){
+            for(var item of this.state.items){
                 product = await getProductJson(item.handle);
-                let img = product.media.find( m => { return m.src.indexOf('_front.') != -1})
-                if(img){ item.image = img.src };
+                let img = product.media.find( m => { return m.src.indexOf('_front.') != -1;});
+                if(img){ item.image = img.src; }
             }
 
 
-            console.log(this.state.items[0]?.image)
             this.items = this.state.items;
             this.isLoading = false;
 
         }
-    })
-})
+    });
+});
 
 async function getProductJson(handle) {
     res =  await fetch('/products/' + handle + '.js');
@@ -108,15 +107,15 @@ function cartDrawer() {
         
 		async init() {
 			this.$watch('open', value => {
-				value && this.$refs.closeButton.focus()
-				this.toggleOverlay()
-			})
-			this.toggleOverlay()
+				value && this.$refs.closeButton.focus();
+				this.toggleOverlay();
+			});
+			this.toggleOverlay();
 		},
 		toggleOverlay() {
-			document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden')
+			document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden');
 		}
-	}
+	};
 }
 
 function sizeModal(){
@@ -126,14 +125,14 @@ function sizeModal(){
 		init() {
 			this.$watch('open', value => {
 				//value && this.$refs.closeButton.focus()
-				this.toggleOverlay()
-			})
-			this.toggleOverlay()
+				this.toggleOverlay();
+			});
+			this.toggleOverlay();
 		},
 		toggleOverlay() {
-			 document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden')
+			 document.body.classList[this.open ? 'add' : 'remove']('h-screen', 'overflow-hidden');
 		}
-	}   
+	};
 }
 
 function usd(cents){
