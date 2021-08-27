@@ -21,13 +21,13 @@
   {
     "name":"Colors",
     "settings":[
-      {"label": "WU Main","id": "color_nav","type": "color","default": "#0A6BFF"},
+      {"label": "WU Main","id": "color_nav","type": "color","default": "#2000CD"},
       {"label": "WU Text","id": "color_text","type": "color","default": "#FFFFFF"},
       {"label": "Red","id": "color_red","type": "color","default": "#DD343B"},
       {"label": "Green","id": "color_green","type": "color","default": "#009444"},
-      {"label": "Blue","id": "color_blue","type": "color","default": "#2000CD"},
+      {"label": "Blue","id": "color_blue","type": "color","default": "#0A6BFF"},
       {"label": "Yellow","id": "color_yellow","type": "color","default": "#FBCC03"},
-      {"label": "Turquoise","id": "color_turquoise","type": "color","default": "#1BBDBD"},
+      {"label": "Turquoise","id": "color_turquoise","type": "color","default": "#00A0F8"},
       {"label": "Brown","id": "color_brown","type": "color","default": "#D6C8AB"},
       {"label": "Gray","id": "color_gray","type": "color","default": "#BBBBBB"},
       {"label": "White","id": "color_white","type": "color","default": "#FFFFFF"},

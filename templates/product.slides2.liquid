@@ -31,17 +31,19 @@
 
 <div class="grid md:grid-cols-3" style="--base-col:{% unless base_col == 'white' %}{{base_col}}{% endunless %};">
 
-  <div class="md:col-span-2 order-1 md:order-2 relative">
-    <div class="sm:h-screen sm:h-[calc(100vh-3rem)] overflow-x-scroll snap snap-x flex" style="">
+  <div class="md:col-span-2 order-1 md:order-2 relative h-1/2 sm:h-screen sm:h-[calc(100vh-6rem)]">
+    <div class=" overflow-x-scroll w-full snap snap-x flex" style="">
     {% for image in product.images %}{% unless image.src contains "_front."  or image.src contains "_bycol." %}
 
-      <div class="snap-center xaspect-h-1 xaspect-w-1 w-full max-h-full flex-shrink-0 self-center justify-self-center {% cycle 'bg': 'bg-wu-blue','bg-wu-red','bg-wu-green','bg-wu-yellow' %}">
-        <img class="object-contain p-0 md:p-0 w-auto max-h-full m-auto" src="{{ image.src | img_url: '2048x2048' }}" alt="{{ image.alt | escape }}">
-      </div>
+      <!-- <div class="snap-center p-12 w-full h-full flex-shrink-0 self-center justify-self-center grid place-items-center {% cycle 'bg': 'bg-wu-blue','bg-wu-red','bg-wu-green','bg-wu-yellow' %}">
+        <img class="object-contain p-4 border-2 xmd:p-0 w-[300px] h-[300px] xw-auto xmax-h-full xm-auto" src="{{ image.src | img_url: '2048x2048' }}" alt="{{ image.alt | escape }}">
+      </div> -->
 
-    {% endunless %}{% endfor %}
+      <img class="w-screen md:w-[66vw] object-contain p-2 md:p-8 snap-center" src="{{ image.src | img_url: '2048x2048' }}" alt="{{ image.alt | escape }}">
+
+      {% endunless %}{% endfor %}
     </div>
-    <div class="hidden absolute top-0 bottom-0 w-full grid grid-cols-2 place-items-center">
+    <div class="xhidden absolute inset-0 w-full grid grid-cols-2 place-items-center pointer-events-none">
       <span class="justify-self-start p-10 text-wu-white ">
         <svg class="fill-current h-6 w-6">
           <use href="#arrow-left"></use>

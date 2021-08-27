@@ -12,20 +12,20 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'wu-nav':'var(--nav,#0055FF)',
+        'wu-nav':'var(--nav,#2000CD)',
         'wu-text':'var(--text,#FFFFFF)',
         'wu-red':'var(--red,#DD343B)',
         'wu-green':'var(--green,#009444)',
-        'wu-blue':'var(--blue,#2000CD)',
+        'wu-blue':'var(--blue,#0A6BFF)',
         'wu-yellow':'var(--yellow,#FBCC03)',
-        'wu-turquoise':'var(--turquoise,#1BBDBD)',
+        'wu-turquoise':'var(--turquoise,#00A0F8)',
         'wu-brown':'var(--brown,#D6C8AB)',
         'wu-gray':'var(--gray,#BBBBBB)',
         'wu-white':'var(--white,#FFFFFF)',
         'wu-black':'var(--black,#000000)'
       },
       fontFamily:{
-        sans:['apercu-condensed',...defaultTheme.fontFamily.sans],
+        sans:['erbar',...defaultTheme.fontFamily.sans],
         serif:['gt-alpina',...defaultTheme.fontFamily.serif],
       },
       borderRadius:{

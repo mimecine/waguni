@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: 'apercu-condensed';
     src: url('apercu-condensed-medium.eot');
     src: url('apercu-condensed-medium.eot?#iefix') format('embedded-opentype'),
@@ -17,13 +17,19 @@
          url('apercu-condensed-bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
-}
+} */
 
 @font-face {
     font-family: 'gt-alpina';
     src: url('GT-Alpina-Typewriter-Regular.woff2') format('woff2'),
-         url('GT-Alpina-Typewriter-Regular.woff') format('woff'),
-         url('GT-Alpina-Typewriter-Regular.ttf') format('truetype');
+         url('GT-Alpina-Typewriter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'erbar';
+    src: url('erbar.woff2') format('woff2'),
+         url('erbar.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

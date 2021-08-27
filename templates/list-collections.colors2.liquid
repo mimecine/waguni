@@ -4,7 +4,7 @@
 {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
 <div class="p-2 md:p-8 grid md:grid-cols-2 bg-wu-{{collection.handle}}">
   {% if collection.image %}
-  <div class="col-span-full w-full p-4 pb-12">
+  <div class="col-span-full w-full p-4">
     <img class="object-fill" src="{{ collection.image | img_url: 'x2048' }}"
       srcset="{% render 'attr-srcset', image:collection.image, widths:'400,600,800,1000,1200,1400,1600,1800,2400,3200' %}"
       sizes="96vw">
@@ -30,10 +30,10 @@
 
     <div class="w-full grid place-items-center image">
       <a href="{{ product.url | within: collection }}" class="">
-        <img :class="{'rounded-wu sm:rounded-none' : vis}" class="transition duration-400 transition-border-radius hover:rounded-wu 
+        <img :class="{'rounded-wu sm:rounded-none' : vis}" class="shadow transition duration-400 transition-border-radius hover:rounded-wu 
               {% cycle 'object-right-top', 'object-left-bottom', 'object-left-top'%} object-contain"
           src="{{ theimage.src | img_url: '400x500', crop: 'center' }}"
-          srcset="{%render 'attr-srcset', image:theimage, widths:'400,600,800,1000,1200', crop: 'center', aspect_ratio: '4:5' %}"
+          srcset="{%render 'attr-srcset', image:theimage, widths:'400,600,800,1000,1200', crop: 'center', xaspect_ratio: '4:5' %}"
           sizes="(min-width:768px) 45vw, 80vw" alt="{{ theimage.alt | escape }}" loading="lazy">
       </a>
     </div>

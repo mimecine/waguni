@@ -7,6 +7,9 @@
     section {}
     aside {}
     footer {}
+    .font-sans {
+      @apply tracking-widest;
+    }
 
 }
 
@@ -109,7 +112,8 @@
 .bg-contrasting { @apply bg-wu-white; }
 .text-wu-white.bg-contrasting, .text-wu-white .bg-contrasting { @apply bg-wu-black; }
 
-
+.card-index-1 .image { @apply md:p-[5vw] }
+.card-index-3 .image { @apply md:p-[5vw] }
 .card-index-2 { @apply md:col-span-2 md:w-1/2 md:place-self-end }
 .card-index-5 { @apply md:col-span-2 md:w-1/2 }
 .card-index-6 { @apply md:col-span-2 md:w-1/2 md:place-self-end }
@@ -119,6 +123,6 @@ article:nth-child(odd) .content {
 }
 
 
-input[type="radio"].hidden:checked+label { @apply border-b border-dashed border-current; }
+input[type="radio"].hidden:checked+label { @apply border-b-2 border-dashed border-current; }
 input[type="radio"].hidden+label { @apply cursor-pointer; }
 [x-cloak] {display:none !important}

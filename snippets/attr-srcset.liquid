@@ -7,7 +7,7 @@
         assign w0 = w | plus: 0
          assign liquid_w = w | append: 'x'
         if wr 
-          assign h = w0 | times: wr| divided_by: hr 
+          assign h = w0 | times: hr| divided_by: wr 
           assign liquid_w = liquid_w | append: h
           if h > 0 and image.height <= h 
             break

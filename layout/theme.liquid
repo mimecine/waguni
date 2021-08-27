@@ -25,7 +25,7 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="template-{{template.name}} suffix-{{template.suffix}} tag-{{product.tags | join: ' tag-'}} min-h-screen grid grid-pancake">
+<body class="template-{{template.name}} suffix-{{template.suffix}} tag-{{product.tags | join: ' tag-'}} min-h-screen grid grid-pancake font-sans">
   {% render 'header' %}
   <main role="main" class="bg-wu-blue w-full h-full">
     {{ content_for_layout }}
