@@ -48,48 +48,38 @@
 
 <div class="grid md:grid-cols-3" style="--base-col:{% unless base_col == 'white' %}{{base_col}}{% endunless %};">
 
-  <div class="md:col-span-2 order-1 md:order-2 relative h-[50vh] md:h-[calc(100vh-70px)] {{ imgbgclass }}" x-data="{all_left:true,all_right:false,}">
-    <div class="overflow-x-scroll w-full snap snap-x flex " x-ref="slider">
-    {% for image in product.images %}{% unless 
+  <div class="md:col-span-2 order-1 md:order-2 relative h-[50vh] md:h-[calc(100vh-70px)] {{ imgbgclass }}" 
+  x-data="{all_left:true,all_right:false}">
+    <div class="overflow-x-scroll w-full snap snap-x flex noscrollbar" x-ref="slider" @scroll="all_left=($event.target.scrollLeft==0);all_right=($event.target.scrollLeft+$event.target.clientWidth == $event.target.scrollWidth); console.log()">
+    {%- for image in product.images %}{% unless 
       image.src contains "_front."  or 
-      image.src contains "_bycol."  
-      %}
-      <div class="w-full md:w-full h-[50vh] md:h-[calc(100vh-70px)] snap-center flex-shrink-0">
+      image.src contains "_bycol." or  
+      -%}
+      <div class="w-full md:w-full h-[50vh] md:h-[calc(100vh-70px)] snap-center flex-shrink-0 relative">
         <img class="w-screen md:w-[65vw] h-[50vh] md:h-[calc(100vh-70px)] object-contain p-6 md:p-8" 
         srcset="{% render 'attr-srcset' , image: image, widths: "400,600,800,1000,1200,1600,2400,3200" %}"  
         sizes="(min-width: 768px) 66vw, 96vw" 
-        src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{ image.height }}" alt="{{ image.alt | escape }}" >  
+        src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{ image.height }}" alt="{{ image.alt | escape }}" > 
       </div>
   {% endunless %}{% endfor %}
     </div>
 
-    <span class="absolute top-1/2 left-0 p-4 text-wu-white cursor-pointer xhover:opacity-50" @click="if(!all_left){all_left=!($refs.slider.scrollLeft-$refs.slider.clientWidth); all_right = false; $refs.slider.scrollBy({left:-$refs.slider.clientWidth,behavior:'smooth'})}; progress = $refs.slider.scrollWidth-$refs.slider.scrollLeft-2*$refs.slider.clientWidth" :class="{'opacity-25': all_left }">
+    <button class="absolute top-[calc(50%-1.25rem)] left-0 p-4 text-wu-white" 
+      @click.prevent="$refs.slider.scrollBy({left:-$refs.slider.clientWidth,behavior:'smooth'});" 
+      :class="{'opacity-25': all_left }">
       <svg class="fill-current h-6 w-6">
         <use href="#arrow-left"></use>
       </svg>
-    </span>
+    </button>
 
-    <span class="absolute top-1/2 right-0 p-4 text-wu-white cursor-pointer xhover:opacity-50"  @click="all_left=!($refs.slider.scrollLeft-$refs.slider.clientWidth); all_right = false; $refs.slider.scrollBy({left:$refs.slider.clientWidth,behavior:'smooth'})">        
+    <button class="absolute top-[calc(50%-1.25rem)] right-0 p-4 text-wu-white"  
+      @click.prevent="$refs.slider.scrollBy({left:$refs.slider.clientWidth,behavior:'smooth'});"
+      :class="{'opacity-25':all_right}" >             
       <svg class="fill-current h-6 w-6 rotate-180">
         <use href="#arrow-left"></use>
       </svg>
-    </span>
+    </button>
 
-
-
-    <div class="hidden absolute inset-0 w-full grid grid-cols-2 place-items-center xpointer-events-none">
-      <span class="justify-self-start p-2 text-wu-white " @click="$refs.slider.scrollBy({left:-$refs.slider.clientWidth,behavior:'smooth'})">
-        <svg class="fill-current h-6 w-6">
-          <use href="#arrow-left"></use>
-        </svg>
-      </span>
-
-      <span class="justify-self-end p-2 text-wu-white"  @click="$refs.slider.scrollBy({left:$refs.slider.clientWidth,behavior:'smooth'})">        
-        <svg class="fill-current h-6 w-6 rotate-180">
-          <use href="#arrow-left"></use>
-        </svg>
-      </span>
-    </div>
 </div>
   
 
