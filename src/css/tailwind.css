@@ -66,6 +66,15 @@
         .splash-bg-mobile { @apply bg-cover bg-center; background-image: var(--splash-bg-mobile)};
       }   
       nav .link-current { @apply bg-wu-text text-wu-nav }
+
+      .noscrollbar {
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          display: none; /* for Chrome, Safari, and Opera */
+        } 
+      }
 }
 
 /* non-purged stuff */

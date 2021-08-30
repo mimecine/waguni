@@ -42,7 +42,7 @@
 							<div class="thecard md:col-span-2 flex flex-col justify-between h-full">
 								<div>
 									<a :href="`/products/${line.handle}`">
-										<h1 class="font-sans text-[30px] md:text-[20px]"
+										<h1 class="font-sans text-[30px] lg:text-[20px]"
 											x-text="line.product_title.replace(/ \w+$/,'')"></h1>
 										<h1 class="font-sans text-[15px]"
 											x-text="`${line.product_title.split(' ').pop()} / ${line.variant_title}`">
@@ -94,9 +94,9 @@
 				<div id="cartbuttons" class="flex justify-between pt-8 pb-[20px] md:pb-[40px]">
 					<form action="/cart" method="post" class="w-full">
 						<button
-							class="w-full p-2 text-wu-brown xfont-light bg-wu-blue rounded-3xl text-[20px] tracking-wider"
+							class="w-full p-2 bg-wu-blue rounded-3xl "
 							type="submit" name="checkout">
-							Checkout
+							<p class="text-wu-brown text-[20px] tracking-wider leading-none mt-[0.2em]">Checkout</p>
 						</button>
 					</form>
 				</div>

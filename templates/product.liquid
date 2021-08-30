@@ -65,7 +65,7 @@
 
   <div class="{{ bgclass }} {{ txclass }} md:col-span-1 order-2 md:order-1 p-4 md:p-8 xtext-white xtext-contrasting grid place-content-center grid-cols-1">
   
-    <h1 class="text-[30px] md:text-[36px] mb-4 font-sans">{{ plain_title }}</h1>
+    <h1 class="text-[30px] lg:text-[36px] mb-4 font-sans">{{ plain_title }}</h1>
     <div class="font-serif text-[16px] lg:text-[18px] leading-7 pb-5 order-last md:order-none">
       <p class="text-[12px] lg:text-[14px] font-serif">Details</p>
 
@@ -120,11 +120,11 @@
 
         <div @click.outside="open=false" class="text-left bg-wu-brown isolate overflow-scroll h-full w-full md:h-auto  md:max-w-[700px] p-[20px] md:p-[40px] font-serif text-wu-blue">
           <div class="flex justify-between align-text-top pb-4">
-            <h1 class="font-sans text-[30px] md:text-[36px] uppercase">Size chart</h1>
+            <h1 class="font-sans text-[30px] lg:text-[36px] uppercase">Size chart</h1>
             <button @click.prevent="open = false" class="text-[20px] font-sans">Close</button>
           </div>
 
-          <p class="w-full border-b-2 border-dashed py-2 border-current text-[16px] md:text-[14px]">Product title</p>
+          <p class="w-full border-b-2 border-dashed py-2 border-current text-[16px] lg:text-[14px]">Product title</p>
           <p class="font-sans text-xl py-2">{{plain_title}}</p>
           <p class="py-2 text-[20px]">{{product.metafields.wagner.size_chart_caption}}</p>
           {%liquid 
@@ -133,7 +133,7 @@
           <div class="grid grid-cols-3 pt-8">
             {% for line in size_lines %}
               {% if forloop.first %}
-                {% assign size_chart_classes = "text-[16px] md:text-[14px]" %}
+                {% assign size_chart_classes = "text-[16px] lg:text-[14px]" %}
               {% else %}
                 {% assign size_chart_classes = "text-[20px] font-sans tracking-wide" %}
               {% endif %}

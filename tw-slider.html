@@ -29,7 +29,7 @@ l { line-height:1; vertical-align: -0.2rem; }
     </style>
 </head>
 <body class="tw-test grid grid-pancake min-h-screen text-wu-red bg-wu-brown font-sans">
-    <header class="bg-wu-nav p-2 sticky flex justify-between align-middle text-white text-xl uppercase" x-data="{open:false}">
+    <header class="bg-wu-nav h-[70px] sticky flex justify-between align-middle text-white text-xl uppercase" x-data="{open:false}">
         
         <nav class="hidden sm:block">
             <ul class="menu flex items-center h-full">
@@ -70,17 +70,6 @@ l { line-height:1; vertical-align: -0.2rem; }
 
     </header>
     <main class="">
-
-        <button class="w-1/3 p-2 text-wu-brown font-light bg-wu-text rounded-3xl" type="submit" name="checkout" style="
-    line-height: 1;
-    vertical-align: -6px;
-    font-size:20px;
-
-    
-"><l>Checkout CHECKOUT</l></button>
-
-
-
         <div class="h-full grid md:grid-cols-3">
             <div class="sidebar flex flex-col justify-center">
                 <div class="h1">Title</div>
@@ -128,11 +117,11 @@ l { line-height:1; vertical-align: -0.2rem; }
                 </div>
             </div> -->
     
-            <div x-data="{items: ['foo','bar','baz','buz'], active: 0}" class="col-span-2 w-full h-full">
+            <div x-data="{items: ['foo','bar','baz','buz'], active: 0}" class="col-span-2 w-full">
                 <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider"
                     x-on:scroll.debounce="active = Math.round($event.target.scrollLeft / ($event.target.scrollWidth / items.length))">
                     <template x-for="(item,index) in items" :key="index">
-                        <div class="w-full flex-shrink-0 h-32 bg-black text-white flex items-center justify-center">
+                        <div class="w-full flex-shrink-0 h-[calc(100vh-70px-32px)] bg-black text-white flex items-center justify-center">
                             <span x-text="item"></span>
                         </div>
                     </template>

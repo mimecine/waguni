@@ -22,6 +22,7 @@
     "postcss": "^8.3.6",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "tailwindcss": "^2.2.7",
     "tailwindcss-scroll-snap": "^1.1.0",
     "webpack": "^5.50.0",

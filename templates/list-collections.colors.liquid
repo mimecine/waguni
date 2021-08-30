@@ -23,7 +23,7 @@
   endfor
   %}
   <div
-    class="grid grid-rows-[7fr,1fr] relative w-full p-4 odd:pl-24 even:pr-24 odd:md:pl-4 even:md:pr-4  card-index-{{ forloop.index0|modulo:7 }}"
+    class="grid grid-rows-[5fr,1fr] relative w-full p-4 odd:pl-24 even:pr-24 odd:md:pl-4 even:md:pr-4  card-index-{{ forloop.index0|modulo:7 }}"
     x-data="{vis:false}">
     <div class="absolute top-1/2" x-mintersect.in="vis=true" x-mintersect.out="vis=false"
       data-handle="{{product.handle}}"></div>
@@ -37,7 +37,7 @@
           sizes="(min-width:768px) 45vw, 80vw" alt="{{ theimage.alt | escape }}" loading="lazy">
       </a>
     </div>
-    <div class="w-full text-center p-4 text-contrasting font-sans text-[16px] md:text-[20px]">
+    <div class="w-full text-center p-4 text-contrasting font-sans text-[16px] lg:text-[20px]">
       <a href="{{ product.url | within: collection }}">{{plain_title}}</a>
     </div>
   </div>
