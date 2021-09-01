@@ -53,7 +53,7 @@
     {% for image in product.images %}{% unless image.src contains "_grid."  or image.src contains "_gridhover." or image.src contains "_color." or image.src contains "_Illustration." %}
       <div class="w-full max-h-full flex-shrink-0 self-center justify-self-center xcontrast-color:{{ base_col }} {{ imgbgclass }}">
         <img 
-          class="object-contain p-8 md:p-8 w-auto max-h-full m-auto" 
+          class="object-contain p-[20px] md:p-[20px] w-auto max-h-full m-auto" 
           srcset="{% render 'attr-srcset' , image: image, widths: "400,600,800,1000,1200,1600,2400,3200" %}"  
           sizes="(min-width: 768px) 60vw, 95vw" 
           src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{ image.height }}" alt="{{ image.alt | escape }}" >
@@ -63,7 +63,7 @@
   </div>
   
 
-  <div class="{{ bgclass }} {{ txclass }} md:col-span-1 order-2 md:order-1 p-4 md:p-8 xtext-white xtext-contrasting grid place-content-center grid-cols-1">
+  <div class="{{ bgclass }} {{ txclass }} md:col-span-1 order-2 md:order-1 p-[20px] md:p-[40px] xtext-white xtext-contrasting grid place-content-center grid-cols-1">
   
     <h1 class="text-[30px] lg:text-[36px] mb-4 font-sans">{{ plain_title }}</h1>
     <div class="font-serif text-[16px] lg:text-[18px] leading-7 pb-5 order-last md:order-none">

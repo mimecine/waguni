@@ -953,20 +953,28 @@ footer {
   top: 50%;
 }
 
-.left-0 {
-  left: 0px;
-}
-
 .top-\[calc\(50\%-1\.25rem\)\] {
   top: calc(50% - 1.25rem);
 }
 
-.bottom-2 {
-  bottom: 0.5rem;
+.left-0 {
+  left: 0px;
 }
 
-.left-2 {
-  left: 0.5rem;
+.left-1\/2 {
+  left: 50%;
+}
+
+.bottom-\[10px\] {
+  bottom: 10px;
+}
+
+.left-\[10px\] {
+  left: 10px;
+}
+
+.left-\[20px\] {
+  left: 20px;
 }
 
 .isolate {
@@ -1015,6 +1023,14 @@ footer {
 
 .m-auto {
   margin: auto;
+}
+
+.m-\[-20px\] {
+  margin: -20px;
+}
+
+.m-\[-100px\] {
+  margin: -100px;
 }
 
 .mx-2 {
@@ -1189,6 +1205,10 @@ footer {
   height: 50vh;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .max-h-full {
   max-height: 100%;
 }
@@ -1227,6 +1247,18 @@ footer {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-\[40px\] {
+  width: 40px;
+}
+
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[67vw\] {
+  width: 67vw;
 }
 
 .max-w-md {
@@ -1322,6 +1354,18 @@ footer {
 
 .grid-rows-\[7fr\2c 1fr\] {
   grid-template-rows: 7fr 1fr;
+}
+
+.grid-rows-\[5\.5fr\2c 1fr\] {
+  grid-template-rows: 5.5fr 1fr;
+}
+
+.grid-rows-\[6fr\2c 1fr\] {
+  grid-template-rows: 6fr 1fr;
+}
+
+.grid-rows-\[1fr\2c auto\] {
+  grid-template-rows: 1fr auto;
 }
 
 .flex-row {
@@ -1676,6 +1720,10 @@ footer {
   padding: 2.5rem;
 }
 
+.p-\[40px\] {
+  padding: 40px;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1744,6 +1792,11 @@ footer {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-\[10px\] {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .pt-20 {
@@ -2472,12 +2525,6 @@ input[type="radio"].hidden+label {
   opacity: 0.5;
 }
 
-.hover\:shadow-md:hover {
-  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), var(--tw-shadow);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2604,6 +2651,14 @@ input[type="radio"].hidden+label {
     bottom: 0px;
   }
 
+  .md\:bottom-\[20px\] {
+    bottom: 20px;
+  }
+
+  .md\:left-\[20px\] {
+    left: 20px;
+  }
+
   .md\:order-none {
     order: 0;
   }
@@ -2660,6 +2715,10 @@ input[type="radio"].hidden+label {
     width: 65vw;
   }
 
+  .md\:w-\[67vw\] {
+    width: 67vw;
+  }
+
   .md\:max-w-\[700px\] {
     max-width: 700px;
   }
@@ -2692,6 +2751,10 @@ input[type="radio"].hidden+label {
     padding: 0px;
   }
 
+  .md\:p-\[20px\] {
+    padding: 20px;
+  }
+
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -2700,6 +2763,11 @@ input[type="radio"].hidden+label {
   .md\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .md\:px-\[20px\] {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .md\:pt-\[40px\] {
@@ -2742,12 +2810,20 @@ input[type="radio"].hidden+label {
     padding-left: 1rem;
   }
 
+  .odd\:md\:pl-0:nth-child(odd) {
+    padding-left: 0px;
+  }
+
   .md\:even\:pr-4:nth-child(even) {
     padding-right: 1rem;
   }
 
   .even\:md\:pr-4:nth-child(even) {
     padding-right: 1rem;
+  }
+
+  .even\:md\:pr-0:nth-child(even) {
+    padding-right: 0px;
   }
 
   .group:hover .md\:group-hover\:block {
@@ -2859,5 +2935,17 @@ input[type="radio"].hidden+label {
 @media (min-width: 1536px) {
   .\32xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .\32xl\:text-\[36px\] {
+    font-size: 36px;
+  }
+
+  .\32xl\:text-\[18px\] {
+    font-size: 18px;
+  }
+
+  .\32xl\:text-\[14px\] {
+    font-size: 14px;
   }
 }

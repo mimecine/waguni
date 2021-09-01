@@ -97,31 +97,18 @@
 
         <div class="w-full aspect-w-4 aspect-h-5">
           <img  class="block md:group-hover:hidden object-cover xp-0 px-[40px] py-[25px]" 
-                src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" 
-                width="{{ front_image.width }}" height="{{ front_image.height  }}" 
+                src="{{ front_image.src | img_url: '80x100', crop:'center' }}" alt="{{ front_image.alt | escape }}" 
+                width="80" height="100" 
                 loading="lazy"
                 srcset="{% render 'attr-srcset' with front_image as image, widths: '400,800,1200', aspect_ratio: '4:5', crop: 'center' %}"
-                sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw">
+                sizes="(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw">
           <img  class="hidden md:group-hover:block object-cover p-0" 
-                src="{{ hover_image.src | img_url: '800x' }}" alt="{{ hover_image.alt | escape }}"
-                width="{{ hover_image.width }}" height="{{ hover_image.height  }}" 
+                src="{{ hover_image.src | img_url: '80x100', crop:'center' }}" alt="{{ hover_image.alt | escape }}"
+                width="80" height="100" 
                 loading="lazy" 
                 srcset="{% render 'attr-srcset' with hover_image as image, widths: '400,800,1200', aspect_ratio: '4:5', crop: 'center' %}"
-                sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw">
+                sizes="(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw">
         </div>
-
-        <!-- <div class="">
-          <img  class="block md:group-hover:hidden w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" 
-                src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.featured_image.alt | escape }}" 
-                srcset="{% render 'attr-srcset' with product.featured_image as image, widths: '400,800,1200' %}"
-                sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
-                loading="lazy">
-          <img  class="hidden group-hover:block w-full h-[36rem] md:h-80 xl:h-96 object-cover object-bottom p-0" 
-                src="{{ front_image.src | img_url: '800x' }}" alt="{{ front_image.alt | escape }}" 
-                srcset="{% render 'attr-srcset' with front_image as image, widths: '400,800,1200' %}"
-                sizes="(min-width: 768px) 35vw, (min-width: 1536px) 25vw, 100vw"
-                loading="lazy">
-        </div> -->
       </a>
       <div class="
         xtransition-opacity 
@@ -130,14 +117,7 @@
         absolute w-full bottom-[40px] {{ txclass }} bg-transparent xbg-{{ base_col }}">
         <a class="pb-2 pt-3 px-4 h-[40px] bg-wu-white text-wu-blue text-[16px] lg:text-[20px]" href="{{ product.url | within: collection }}">{{ plain_title }}</a>
       </div>
-      <!-- <div class="
-        transition-opacity 
-        md:opacity-0 group-hover:opacity-100 
-        font-bold text-center 
-        absolute w-full bottom-0 p-4 {{ txclass }} bg-{{ base_col }}">
-        <a class="border-0 border-b border-current border-dashed pb-2" href="{{ product.url | within: collection }}">{{ plain_title }}</a>
-      </div> -->
-  
+
     </div>
   {% endfor %}
   <!-- padding for justification -->
@@ -148,9 +128,4 @@
   <div class="grid bg-wu-blue"></div>
   <div class="grid bg-wu-red"></div>
 
-{% unless remainder == 0 %}
-  {% for i in (remainder..2) %}
-    <div class="hidden md:grid items-center justify-center  {% cycle 'bg': 'bg-purple-400', 'bg-green-200', 'bg-blue-700' %} text-5xl {% cycle 'col': 'text-red-500', 'text-blue-500' %} font-black aspect-h-1 aspect-w-1"> </div>
-  {% endfor %}
-  {% endunless %}
   </section>
