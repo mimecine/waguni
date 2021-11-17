@@ -17,6 +17,7 @@ module.exports = {
         'wu-red':'var(--red,#DD343B)',
         'wu-green':'var(--green,#009444)',
         'wu-blue':'var(--blue,#0A6BFF)',
+        'wu-blue-alt':'var(--blue-alt,#2F31B5)',
         'wu-yellow':'var(--yellow,#FBCC03)',
         'wu-turquoise':'var(--turquoise,#00A0F8)',
         'wu-brown':'var(--brown,#D6C8AB)',

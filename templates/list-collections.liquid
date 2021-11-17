@@ -2,7 +2,23 @@
 {% assign collection = col.object%}
 {% unless collection.products == empty %}
 {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
-<div class="p-[20px] md:p-[40px] grid md:grid-cols-2 bg-wu-{{collection.handle}}">
+{% liquid 
+  case collection.handle 
+    when "red"
+      assign bgclass = "bg-wu-red"
+    when "green"
+      assign bgclass = "bg-wu-green"
+    when "blue"
+      assign bgclass = "bg-wu-blue-alt"
+    when "turquoise"
+      assign bgclass = "bg-wu-turquoise"
+    when "black"
+      assign bgclass = "bg-wu-black"
+    when "white"
+      assign bgclass = "bg-wu-white"
+  endcase
+%}
+<div class="p-[20px] md:p-[40px] grid md:grid-cols-2 xbg-wu-{{collection.handle}} {{bgclass}}">
   {% if collection.image %}
   <div class="col-span-full w-full pb-12">
     <img class="object-fill" src="{{ collection.image | img_url: 'x2048' }}"
@@ -29,16 +45,28 @@
       data-handle="{{product.handle}}"></div>
 
     <div class="w-full grid place-items-center image">
-      <a href="{{ product.url | within: collection }}" class="">
-        <img :class="{'rounded-wu sm:rounded-none' : vis}" class="transition duration-400 transition-border-radius hover:rounded-wu 
-              {% cycle 'object-right-top', 'object-left-bottom', 'object-left-top'%} object-contain"
-          src="{{ theimage.src | img_url: '400x500', crop: 'center' }}"
-          srcset="{%render 'attr-srcset', image:theimage, widths:'400,600,800,1000,1200', crop: 'center', aspect_ratio: '4:5' %}"
-          sizes="(min-width:768px) 50vw, 80vw" alt="{{ theimage.alt | escape }}" loading="lazy">
+
+      <div class="group">
+        <figure class="overflow-hidden">
+          <a href="{{ product.url | within: collection }}"><img src="{{ theimage.src | img_url: '400x500', crop: 'center' }}" src="{{ theimage.src | img_url: '400x500', crop: 'center' }}"
+            srcset="{%render 'attr-srcset', image:theimage, widths:'400,600,800,1000,1200', crop: 'center', aspect_ratio: '4:5' %}"
+            sizes="(min-width:768px) 50vw, 80vw" alt="{{ theimage.alt | escape }}" loading="lazy" alt="" class="group-hover:scale-110 transition-transform duration-500" /></a>
+        </figure>
+        <p class="w-full text-center p-4 pb-8 sm:pb-4 text-contrasting font-sans text-[16px] lg:text-[20px]"><a href="{{ product.url | within: collection }}" class="border-b-2 border-transparent group-hover:border-current">{{plain_title}}</a></p>
+      </div>
+      {% comment %}
+      <a href="{{ product.url | within: collection }}">
+        <div class="overflow-hidden w-full h-full">
+          <img :xclass="{'scale-110 sm:scale-100' : vis}" class="object-fill group-hover:scale-110 transition-transform duration-500"
+            src="{{ theimage.src | img_url: '400x500', crop: 'center' }}"
+            srcset="{%render 'attr-srcset', image:theimage, widths:'400,600,800,1000,1200', crop: 'center', aspect_ratio: '4:5' %}"
+            sizes="(min-width:768px) 50vw, 80vw" alt="{{ theimage.alt | escape }}" loading="lazy">
+        </div>
       </a>
-    </div>
-    <div class="w-full text-center p-4 text-contrasting font-sans text-[16px] lg:text-[20px]">
-      <a href="{{ product.url | within: collection }}">{{plain_title}}</a>
+      <div class="w-full text-center p-4 pb-8 sm:pb-4 text-contrasting font-sans text-[16px] lg:text-[20px]">
+        <a href="{{ product.url | within: collection }}" class="group-hover:border-b-2 border-current">{{plain_title}}</a>
+      </div>
+      {% endcomment %}
     </div>
   </div>
   {% endfor %}

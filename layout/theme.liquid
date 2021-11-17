@@ -10,6 +10,9 @@
   {% for link in  menu_links %}
     <link rel="prefetch" href="{{ link.url }}">
   {% endfor %}
+  {% if settings.favicon %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url }}">
+  {% endif %}
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <style>
     [x-cloak]{display:none !important;}
@@ -28,7 +31,7 @@
 
 <body class="template-{{template.name}} suffix-{{template.suffix}} tag-{{product.tags | join: ' tag-'}} min-h-screen grid grid-pancake font-sans">
   {% render 'header' %}
-  <main role="main" class="bg-wu-blue w-full h-full">
+  <main role="main" class="bg-wu-gray w-full h-full">
     {{ content_for_layout }}
   </main>
 

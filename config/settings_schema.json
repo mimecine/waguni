@@ -26,6 +26,7 @@
       {"label": "Red","id": "color_red","type": "color","default": "#DD343B"},
       {"label": "Green","id": "color_green","type": "color","default": "#009444"},
       {"label": "Blue","id": "color_blue","type": "color","default": "#0A6BFF"},
+      {"label": "Blue Alt","id": "color_blue_alt","type": "color","default": "#2F31B5"},
       {"label": "Yellow","id": "color_yellow","type": "color","default": "#FBCC03"},
       {"label": "Turquoise","id": "color_turquoise","type": "color","default": "#00A0F8"},
       {"label": "Brown","id": "color_brown","type": "color","default": "#D6C8AB"},
@@ -38,6 +39,7 @@
   {
     "name": "Images",
     "settings":[
+      {"label":"Fav Icon","id":"favicon","type":"image_picker"},
       {"label":"Desktop Splash","id":"desktop_splash","type":"image_picker"},
       {"label":"Mobile Splash","id":"mobile_splash","type":"image_picker"}
     ]

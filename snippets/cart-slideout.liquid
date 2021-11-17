@@ -1,20 +1,16 @@
 <div x-cloak x-data="cartDrawer" @open-menu.window="open = $event.detail.open" @toggle-cart-drawer.window="open =! open"
 	@keydown.window.tab="usedKeyboard = true" @keydown.window.escape="open = false">
 	<div x-show.transition.opacity.duration.500="open" @click="open = false"
-		class="fixed inset-0 bg-wu-black opacity-50"></div>
-	<div class="fixed transition duration-150 right-0 top-0 transform w-full max-w-lg h-screen bg-wu-brown text-wu-blue overflow-hidden"
+		class="fixed inset-0 bg-wu-white opacity-50"></div>
+	<div class="fixed transition duration-150 right-0 top-0 transform w-full max-w-[600px] h-screen bg-wu-gray text-wu-blue overflow-hidden"
 		:class="{'translate-x-full': !open}">
-
-		<button @click="open = false" x-ref="closeButton" :class="{'focus:outline-none': !usedKeyboard}"
-			class="fixed top-0 right-0 mr-4 mt-2 z-50">
-		</button>
-		<div class="pt-[70px] px-6 absolute top-0 h-full w-full overflow-y-scroll">
+		<div class="pt-[70px] px-[20px] md:px-[40px] absolute top-0 h-full w-full overflow-y-scroll flex flex-col">
 
 			<div class="pt-[20px] md:pt-[40px] font-serif flex justify-between">
-				<h1>Your Cart</h1>
-				<button @click="open = false" x-ref="closeButton" class="font-sans text-[20px] tracking-wider"
+				<h1 class="text-[14px]">Your Cart</h1>
+				<button @click="$dispatch('toggle-cart-drawer',{open:false})" x-ref="closeButton" class="font-sans text-[20px] tracking-wider"
 					:class="{'focus:outline-none': !usedKeyboard}">
-					<w-u class="">Close</w-u>
+					<w-u class="border-b-2 border-transparent hover:border-current">Close</w-u>
 				</button>
 			</div>
 
@@ -24,16 +20,16 @@
 			</div>
 
 
-			<div x-cloak x-data x-show="$store.Cart.items.length > 0">
+			<div x-cloak x-data x-show="$store.Cart.items.length > 0" class="xh-full flex flex-col flex-grow">
 
 				<div id="cartitems">
 					<template x-for="line in $store.Cart.items">
-						<div class="grid md:grid-cols-3 gap-2 py-6 border-b-2 border-dashed border-wu-blue">
+						<div class="grid md:grid-cols-3 gap-[20px] pt-[20px] pb-[40px] border-b-2 border-dashed border-wu-blue">
 							<div class="thepicture"><a :href="`/products/${line.handle}`">
 									<div class="aspect-w-4 aspect-h-5">
 										<div class="w-full h-full">
 											<img class="w-full h-full object-cover"
-												:src="line.image.replace(/\.[a-z]{3,4}$/,'_300x.jpg')">
+												:src="line.image.replace(/\.[a-z]{3,4}$/,'_400x.jpg')">
 										</div>
 									</div>
 								</a>
@@ -44,26 +40,27 @@
 									<a :href="`/products/${line.handle}`">
 										<h1 class="font-sans text-[30px] lg:text-[20px]"
 											x-text="line.product_title.replace(/ \w+$/,'')"></h1>
-										<h1 class="font-sans text-[15px]"
+										<h1 class="font-sans text-[20px] sm:text-[16px]"
 											x-text="`${line.product_title.split(' ').pop()} / ${line.variant_title}`">
 										</h1>
-										<h1 class="font-sans text-[15px]" x-show="line.quantity > 1"
-											x-text="`$${line.price/100}`"></h1>
+										<h1 class="font-sans text-[20px] sm:text-[16px]" x-show="line.quantity > 1"
+											x-text="`${line.quantity} @ $${line.price/100}`"></h1>
 									</a>
 								</div>
-								<div class="flex flex-row justify-between items-center">
+								<div class="flex flex-row justify-between items-center py-[20px] md:py-0">
 									<div>
-										<div class="inline-flex px-3 py-1 pt-2 items-center text-[20px] tracking-wider leading-none text-wu-blue  border-2 border-current rounded-full">
+										
+										<div class="inline-flex px-3 py-1 pt-2 items-center text-[20px] tracking-wider leading-none text-wu-blue  border-wu-blue hover:text-wu-gray hover:bg-wu-blue  border-2 rounded-full">
 											<button @click="$store.Cart.removeItem(line.key)"
-											class="hover:text-wu-red hover:text-wu-red">Remove</button>
+											class="">Remove</button>
 										</div>
 										<div
 											class="inline-flex px-3 py-1 pt-2 border-2 border-current rounded-full text-[20px] tracking-wider leading-none">
 											<button @click="$store.Cart.setQuantity(line.key,line.quantity - 1)"
-												class="pr-2 hover:text-wu-red  hover:text-wu-red">&#65293;</button>
+												class="pr-2">&#65293;</button>
 											<span x-text="line.quantity" class="px-2"></span>
 											<button @click="$store.Cart.setQuantity(line.key,line.quantity + 1)"
-												class="pl-2 hover:text-wu-green  hover:text-wu-green">&#65291;</button>
+												class="pl-2">&#65291;</button>
 										</div>
 									</div>
 									<div x-text="`$${line.line_price/100}`" class="text-[20px] tracking-wider leading-none pt-1">
@@ -91,21 +88,26 @@
 					</div>
 				</div>
 
-				<div id="cartbuttons" class="flex justify-between pt-8 pb-[20px] md:pb-[40px]">
+				<div id="cartbuttons" class="flex flex-col justify-end flex-grow gap-[12px] mb-[80px] md:mb-0 pt-8 pb-[40px] md:pb-[40px]">
 					<form action="/cart" method="post" class="w-full">
 						<button
-							class="w-full p-2 bg-wu-blue rounded-3xl "
+							class="w-full mb-[10px] md:mb-0 p-2 border-2 rounded-3xl text-wu-blue  border-wu-blue hover:text-wu-gray hover:bg-wu-blue  "
 							type="submit" name="checkout">
-							<p class="text-wu-brown text-[20px] tracking-wider leading-none mt-[0.2em]">Checkout</p>
+							<p class=" text-[20px] tracking-wider leading-none mt-[0.2em]">Checkout</p>
 						</button>
 					</form>
+					<button
+					class="w-full p-2 border-2 rounded-3xl text-wu-blue  border-wu-blue hover:text-wu-gray hover:bg-wu-blue  "
+					type="submit" name="checkout" @click="$dispatch('toggle-cart-drawer',{open:false})">
+						<p class=" text-[20px] tracking-wider leading-none mt-[0.2em]">Continue Shopping</p>
+					</button>
 				</div>
 
 			</div>
 		</div>
 
 		<div x-show="$store.Cart.isLoading"
-			class="fixed inset-0 bg-wu-brown opacity-75 flex justify-center items-center">
+			class="fixed inset-0 bg-wu-gray opacity-75 flex justify-center items-center">
 			<div :class="{'animate-spin':open}" class="h-8 w-8 rounded-full border-b-2 border-wu-text"></div>
 		</div>
 

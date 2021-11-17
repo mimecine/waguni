@@ -82,7 +82,7 @@ document.addEventListener('alpine:init', () => {
 
             for(var item of this.state.items){
                 product = await getProductJson(item.handle);
-                let img = product.media.find( m => { return m.src.indexOf('_Illustration.') != -1;});
+                let img = product.media.find( m => { return m.src.indexOf('_illustration.') != -1;});
                 if(img){ item.image = img.src; }
             }
 

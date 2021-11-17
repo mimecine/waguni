@@ -75,6 +75,8 @@
             assign txclass = "text-wu-black"
             assign borderclass = "border-wu"
           endcase
+
+          assign bgclass = "bg-wu-white"
       %}
   
 
@@ -83,12 +85,12 @@
         assign front_image = product.featured_image
         assign hover_image = product.featured_image
         for image in product.images 
-          if image.src contains "_front"
+          if image.src contains "_front."
+            assign front_image = image
+          elsif image.src contains "_hover."
             assign hover_image = image
-            break
           endif
         endfor
-        assign hover_image = product.images[1]
       %}
       {% assign title_color = product.title | split: " " | last %}
       {% assign plain_title = product.title | remove: title_color | strip %}
@@ -96,7 +98,7 @@
       <a href="{{ product.url | within: collection }}" class="w-full block relative">
 
         <div class="w-full aspect-w-4 aspect-h-5">
-          <img  class="block md:group-hover:hidden object-cover xp-0 px-[40px] py-[25px]" 
+          <img  class="block md:group-hover:hidden object-cover xp-0 xxpx-[40px] xxpy-[25px]" 
                 src="{{ front_image.src | img_url: '80x100', crop:'center' }}" alt="{{ front_image.alt | escape }}" 
                 width="80" height="100" 
                 loading="lazy"
@@ -121,11 +123,30 @@
     </div>
   {% endfor %}
   <!-- padding for justification -->
-  <div class="grid bg-wu-green"></div>
-  <div class="grid bg-wu-blue"></div>
-  <div class="grid bg-wu-red"></div>
-  <div class="grid bg-wu-green"></div>
-  <div class="grid bg-wu-blue"></div>
-  <div class="grid bg-wu-red"></div>
-
+  <!-- <div class="pad grid bg-wu-white bg-cover" style="background-image: url({{ "empty_bg_1.png" | asset_img_url: '800x' }});"></div>
+  <div class="pad grid bg-wu-white bg-cover" style="background-image: url({{ "empty_bg_2.png" | asset_img_url: '800x' }});"></div>
+  <div class="pad grid bg-wu-white bg-cover" style="background-image: url({{ "empty_bg_3.png" | asset_img_url: '800x' }});"></div>
+  <div class="pad grid bg-wu-green bg-cover" style="background-image: url({{ "empty_bg_1.png" | asset_img_url: '800x' }});"></div>
+  <div class="pad grid bg-wu-blue bg-cover" style="background-image: url({{ "empty_bg_2.png" | asset_img_url: '800x' }});"></div>
+  <div class="pad grid bg-wu-red bg-cover" style="background-image: url({{ "empty_bg_3.png" | asset_img_url: '800x' }});"></div> -->
+  <!-- <div class="pad grid bg-cover bg-gray-100"></div>
+  <div class="pad grid bg-cover bg-gray-300"></div>
+  <div class="pad grid bg-cover bg-gray-200"></div>
+  <div class="pad grid bg-cover bg-gray-100"></div>
+  <div class="pad grid bg-cover bg-gray-300"></div>
+  <div class="pad grid bg-cover bg-gray-200"></div> -->
+  <script>
+    const dePad = (e) =>{
+      for(el of document.querySelectorAll('.pad:empty')){
+        if( el.clientHeight == 0 ) {
+          el.style.display='none';
+        }       
+      }
+    }
+    window.addEventListener('load',dePad)
+    var timeout;
+    window.addEventListener('resize', e => {
+      clearTimeout(timeout); timeout = setTimeout(dePad,250);
+    })
+  </script>
   </section>
