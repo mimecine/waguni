@@ -145,9 +145,16 @@
     </div>
   </form>
 
+
+
   <div x-data="sizeModal()" class="order-last md:absolute md:bottom-0">
     <p class="py-2 -ml-1 md:-ml-2">
-      <button @keyup.escape.window="open=false" @click.prevent="open = true" class="{% unless product.metafields.wagner.size_chart %}hidden {%endunless%} px-1 md:px-2 py-1 font-sans"><span class="border-b-2 border-transparent hover:border-current text-[20px]">Size Chart</span></button>
+      <button @keyup.escape.window="open=false" @click.prevent="open = true; size = true; care = false" class="{% unless product.metafields.wagner.size_chart %}hidden {%endunless%} px-1 md:px-2 py-1 font-sans">
+        <span class="border-b-2 border-transparent hover:border-current text-[20px]">Size Chart</span>
+      </button>
+      <button @keyup.escape.window="open=false" @click.prevent="open = true; size = false; care = true" class="{% unless product.metafields.descriptors.care_guide %}hidden {%endunless%} px-1 md:px-2 py-1 font-sans">
+        <span class="border-b-2 border-transparent hover:border-current text-[20px]">Care Instructions</span>
+      </button>
     </p>
 
     <div x-cloak x-show="open" @scroll.window.stop="true" 
@@ -155,10 +162,19 @@
 
       <div @click.outside="open=false" class="text-left bg-wu-gray isolate overflow-scroll h-full w-full md:h-auto  md:max-w-[700px] p-[20px] md:p-[40px] font-serif text-wu-blue">
         <div class="flex justify-between align-text-top pb-4">
-          <h1 class="font-sans text-[30px] lg:text-[36px] uppercase">Size chart</h1>
+          <h1 class="font-sans text-[30px] lg:text-[36px] uppercase">
+            <span x-show="size">Size Chart</span>
+            <span x-show="care">Care Instructions</span>
+          </h1>
           <button @click.prevent="open = false" class="text-[20px] font-sans"><span class="border-b-2 border-transparent hover:border-current">Close</span></button>
         </div>
 
+       <div x-show="care">
+          <p class="py-0 text-[14px]">{{product.metafields.descriptors.care_guide | newline_to_br }}</p>
+        </div> 
+
+        <div x-show="size">
+          
         <p class="w-full border-b-2 border-dashed py-2 border-current text-[12px] lg:text-[14px]">Product title</p>
         <p class="font-sans text-[20px]  py-[20px]">{{plain_title}}</p>
         <p class="py-0 text-[14px]">{{product.metafields.wagner.size_chart_caption}}</p>
@@ -194,7 +210,7 @@
           </tr>
           {% endfor %}
         </table>
-
+        </div>
       </div>
     </div>
 

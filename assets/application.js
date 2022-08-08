@@ -121,6 +121,8 @@ function cartDrawer() {
 function sizeModal(){
 	return {
 		open: false,
+        size: false,
+        care: false,
 		usedKeyboard: false,
 		init() {
 			this.$watch('open', value => {
