@@ -13,6 +13,10 @@
     assign bgclass = "bg-wu-red"
     assign bttxclass = "text-wu-red"
     assign imgbgclass = "bg-wu-red"
+  when "wine"
+    assign bgclass = "bg-wu-wine"
+    assign bttxclass = "text-wu-wine"
+    assign imgbgclass = "bg-wu-wine"
   when "green"
     assign bgclass = "bg-wu-green"
     assign bttxclass = "text-wu-green"
@@ -21,6 +25,14 @@
     assign bgclass = "bg-wu-blue"
     assign bttxclass = "text-wu-blue"
     assign imgbgclass = "bg-wu-blue-alt"
+    when "sky"
+    assign bgclass = "bg-wu-sky"
+    assign bttxclass = "text-wu-sky"
+    assign imgbgclass = "bg-wu-sky-alt"
+  when "denim"
+    assign bgclass = "bg-wu-denim"
+    assign bttxclass = "text-wu-denim"
+    assign imgbgclass = "bg-wu-sky-denim"
   when "turquoise"
     assign bgclass = "bg-wu-turquoise"
     assign bttxclass = "text-wu-turquoise"
@@ -106,7 +118,7 @@
   {{ product.description }}</div>
   <div class="py-2">
   <p class="text-[12px] md:text-[14px] font-serif">Color</p>
-  {% assign colors = "red, green, blue, turquoise, yellow, black, white" | split: ", " %}
+  {% assign colors = "red, green, blue, turquoise, yellow, black, white, sky, wine, denim" | split: ", " %}
   <p class="font-sans text-[20px] md:text-[20px] tracking-wider">
   {% for col in colors %}
       {% assign col_hand = product.handle|replace: base_col, col%}
@@ -121,15 +133,15 @@
     <div class="py-2">
 
     <p class="text-[12px] md:text-[14px] font-serif">Size</p>
-    <p class="font-sans text-[20px] md:text-[20px] tracking-wider">
+    <p class="font-sans text-[20px] md:text-[20px] md:leading-loose tracking-wider">
     {% for variant in product.variants %}
     {% if variant.available %}
       <input type="radio" name="id" id="{{ variant.id }}" value="{{ variant.id }}" class="hidden" {% if variant == product.selected_or_first_available_variant%} checked{%endif%}>
-      <label class="inline-block mr-2 " for="{{ variant.id }}">{{ variant.title }}</label>
+      <label class="inline-block mr-2 mb-2" for="{{ variant.id }}">{{ variant.title }}</label>
         
     {% else %}
       <input type="radio" name="id" value="{{ variant.id }}" disabled  class="hidden">
-      <label class="inline-block mr-2 line-through text-wu-gray" for="{{ variant.id }}">{{ variant.title }}</label>
+      <label class="inline-block mr-2 mb-2 line-through text-wu-gray" for="{{ variant.id }}">{{ variant.title }}</label>
     {% endif %}
   {% endfor %}
     </p>
@@ -164,7 +176,7 @@
         <div class="flex justify-between align-text-top pb-4">
           <h1 class="font-sans text-[30px] lg:text-[36px] uppercase">
             <span x-show="size">Size Chart</span>
-            <span x-show="care">Care Instructions</span>
+            <span x-show="care">Care Instructions</span> 
           </h1>
           <button @click.prevent="open = false" class="text-[20px] font-sans"><span class="border-b-2 border-transparent hover:border-current">Close</span></button>
         </div>
@@ -177,24 +189,11 @@
           
         <p class="w-full border-b-2 border-dashed py-2 border-current text-[12px] lg:text-[14px]">Product title</p>
         <p class="font-sans text-[20px]  py-[20px]">{{plain_title}}</p>
-        <p class="py-0 text-[14px]">{{product.metafields.wagner.size_chart_caption}}</p>
+        <p class="py-0 text-[14px]">{{product.metafields.wagner.size_chart_caption | newline_to_br}}</p>
         {%liquid 
           assign size_lines = product.metafields.wagner.size_chart| newline_to_br| strip_newlines | split: "<br />"
         %}
-        <!-- <div class="grid grid-cols-3 pt-8">
-          {% for line in size_lines %}
-            {% if forloop.first %}
-              {% assign size_chart_classes = "text-[12px] lg:text-[14px]" %}
-            {% else %}
-              {% assign size_chart_classes = "text-[20px] font-sans tracking-wide" %}
-            {% endif %}
-            {% assign cells = line | split: ";" %}
-            {% for cell in cells %}
-              <div class="border-b border-dashed border-current py-[10px] pr-2 mt-[3px] {{size_chart_classes}}">{{cell | strip}}</div>
-            {% endfor %}
-          {% endfor %}
-        </div> -->
-
+        
         <table class="w-full">
           {% for line in size_lines %}
             {% if forloop.first %}

@@ -10,7 +10,7 @@
     </div>
     <div class="bg-wu-red aspect-h-3 aspect-w-3 sm:aspect-w-5 lg:aspect-w-6">
 
-    </div>    
+    </div>
 
   </div>
 
@@ -19,7 +19,13 @@
   {% if article_content_test == '' and article.image %} 
   <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}">
     <div class="w-full aspect-w-2 aspect-h-1 col-span-3">
-      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
+      {{ article | image_url: width: 1600 | image_tag: 
+      sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
+      widths: '400, 800, 1200, 1600',
+      class: 'opacity-0 object-cover w-full transition-opacity duration-300', 
+      loading: 'lazy',
+      onload: 'this.classList.remove("opacity-0")'}}
+      <!-- <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}"> -->
     </div>
   </article> 
   {% else %}
@@ -27,7 +33,13 @@
   <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}">
     {% if article.image %}
     <div class="w-full aspect-w-2 aspect-h-1 col-span-2">
-      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
+      {{ article | image_url: width: 1600 | image_tag: 
+        sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
+        widths: '400, 800, 1200, 1600',
+        class: 'opacity-0 object-cover w-full transition-opacity duration-300', 
+        loading: 'lazy',
+        onload: 'this.classList.remove("opacity-0")'}}
+        <!-- <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}"> -->
     </div>
     {% endif %}
     <div class="content p-[20px] md:p-[40px]">

@@ -2,22 +2,26 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode:'jit',
-  purge: [
+  content: [
     './src/css/tw-safelist.txt',
     './*.html',
     './**/*.liquid',
     './assets/**/*.js',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors:{
         'wu-nav':'var(--nav,#2000CD)',
         'wu-text':'var(--text,#FFFFFF)',
         'wu-red':'var(--red,#DD343B)',
-        'wu-green':'var(--green,#009444)',
+        'wu-wine':'var(--wine,#77255C)',
+        'wu-green':'var(--green,#23B085)',
         'wu-blue':'var(--blue,#0A6BFF)',
         'wu-blue-alt':'var(--blue-alt,#2F31B5)',
+        'wu-sky':'var(--sky,#9DC1E7)',
+        'wu-sky-alt':'var(--sky-alt,#2F31B5)',
+        'wu-denim':'var(--denim,#102852)',
+        'wu-denim-alt':'var(--denim-alt,#2F31B5)',
         'wu-yellow':'var(--yellow,#FBCC03)',
         'wu-turquoise':'var(--turquoise,#00A0F8)',
         'wu-brown':'var(--brown,#D6C8AB)',
@@ -37,15 +41,17 @@ module.exports = {
       }
     },
   },
-  variants: {
-      //scrollSnapType:['responsive']
-      extend: {
-      transitionProperty:['hover','focus'],
-    },
+  // variants: {
+  //     extend: {
+  //     transitionProperty:['hover','focus'],
+  //   },
+  // },
+  corePlugins: {
+    aspectRatio: false,
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
-    require('tailwindcss-scroll-snap')
+   // require('tailwindcss-scroll-snap')
   ],
 }
