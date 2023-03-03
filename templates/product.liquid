@@ -13,10 +13,10 @@
     assign bgclass = "bg-wu-red"
     assign bttxclass = "text-wu-red"
     assign imgbgclass = "bg-wu-red"
-  when "wine"
-    assign bgclass = "bg-wu-wine"
-    assign bttxclass = "text-wu-wine"
-    assign imgbgclass = "bg-wu-wine"
+  when "crimson"
+    assign bgclass = "bg-wu-crimson"
+    assign bttxclass = "text-wu-crimson"
+    assign imgbgclass = "bg-wu-crimson"
   when "green"
     assign bgclass = "bg-wu-green"
     assign bttxclass = "text-wu-green"
@@ -25,14 +25,14 @@
     assign bgclass = "bg-wu-blue"
     assign bttxclass = "text-wu-blue"
     assign imgbgclass = "bg-wu-blue-alt"
-    when "sky"
+  when "sky"
     assign bgclass = "bg-wu-sky"
     assign bttxclass = "text-wu-sky"
-    assign imgbgclass = "bg-wu-sky-alt"
+    assign imgbgclass = "bg-wu-sky"
   when "denim"
     assign bgclass = "bg-wu-denim"
     assign bttxclass = "text-wu-denim"
-    assign imgbgclass = "bg-wu-sky-denim"
+    assign imgbgclass = "bg-wu-denim"
   when "turquoise"
     assign bgclass = "bg-wu-turquoise"
     assign bttxclass = "text-wu-turquoise"
@@ -78,10 +78,16 @@
       image.src contains "_bycol."
       -%}
       <div class="w-full md:w-full h-[50vh] md:h-[calc(100vh-70px)] snap-center flex-shrink-0 relative">
-        <img class="w-screen md:w-[67vw] h-[50vh] md:h-[calc(100vh-70px)] object-contain py-[40px] px-[20px] md:p-[40px]" 
-        srcset="{% render 'attr-srcset' , image: image, widths: "400,600,800,1000,1200,1600,2400,3200" %}"  
-        sizes="(min-width: 768px) 66vw, 96vw" 
-        src="{{ image.src | img_url: '100x' }}" width="{{image.width}}" height="{{ image.height }}" alt="{{ image.alt | escape }}" >
+
+        {{ image| image_url: width: 1600 
+                | image_tag: 
+                class: "w-screen md:w-[67vw] h-[50vh] md:h-[calc(100vh-70px)] object-contain py-[40px] px-[20px] md:p-[40px] transition-opacity duration-300 opacity-0",
+                widths: "400,600,800,1000,1200,1600,2400,3200",
+                sizes: "(min-width: 768px) 66vw, 96vw",
+                preload: true,
+                onload: 'this.classList.remove("opacity-0")'
+        }}
+
       </div>
   {%- endunless -%}{%- endfor -%}
     </div>
@@ -118,7 +124,7 @@
   {{ product.description }}</div>
   <div class="py-2">
   <p class="text-[12px] md:text-[14px] font-serif">Color</p>
-  {% assign colors = "red, green, blue, turquoise, yellow, black, white, sky, wine, denim" | split: ", " %}
+  {% assign colors = "red, green, blue, turquoise, yellow, black, white, sky, crimson, denim" | split: ", " %}
   <p class="font-sans text-[20px] md:text-[20px] tracking-wider">
   {% for col in colors %}
       {% assign col_hand = product.handle|replace: base_col, col%}

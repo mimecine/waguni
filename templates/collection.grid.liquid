@@ -11,9 +11,9 @@
       when "red"
         assign bgclass = "bg-wu-red"
         assign txclass = "text-wu-red"
-      when "wine"
-        assign bgclass = "bg-wu-wine"
-        assign txclass = "text-wu-wine"
+      when "crimson"
+        assign bgclass = "bg-wu-crimson"
+        assign txclass = "text-wu-crimson"
       when "green"
         assign bgclass = "bg-wu-green"
         assign txclass = "text-wu-green"
@@ -57,7 +57,7 @@
       %}
   
 
-      <div class="grid {{ bgclass }} relative group xpx-[40px] xpy-[25px] xhover:px-0 xhover:py-0">
+      <div class="grid relative group">
       {%liquid 
         assign front_image = product.featured_image
         assign hover_image = product.featured_image
@@ -74,19 +74,20 @@
     
       <a href="{{ product.url | within: collection }}" class="w-full block relative">
 
-        <div class="w-full aspect-w-4 aspect-h-5 {{bgclass}}">
-
+        <div class="w-full aspect-w-4 aspect-h-5 ">
+          <div class="block w-100 h-100 absolute top-0 left-0 border border-white {{bgclass}} animate-pulse duration-100"> </div>
 
           {{ front_image | image_url: width: 800, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
           widths: '400, 800, 1200',
-          class: 'block opacity-0 md:group-hover:hidden object-cover xp-0 transition-opacity duration-300', 
+          class: 'block opacity-0 md:group-hover:hidden object-cover xp-0 transition-opacity duration-1000', 
           loading: 'lazy',
           onload: 'this.classList.remove("opacity-0")'}}
           {{ hover_image | image_url: width: 800, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
           widths: '400, 800, 1200',
-          class: 'hidden md:group-hover:block object-cover xp-0', 
+          class: 'opacity-0 hidden md:group-hover:block object-cover xp-0', 
+          onload: 'this.classList.remove("opacity-0")',
           preload: true }}
 
         </div>
