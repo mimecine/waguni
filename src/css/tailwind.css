@@ -36,7 +36,7 @@
 }
 
 @layer utilities {
-    @variants responsive {
+    /* @variants responsive { */
         .scroll-snap-none {
           scroll-snap-type: none;
         }
@@ -64,7 +64,7 @@
 
         .splash-bg-desktop { @apply bg-cover bg-center; background-image: var(--splash-bg-desktop)};
         .splash-bg-mobile { @apply bg-cover bg-center; background-image: var(--splash-bg-mobile)};
-      }   
+      /* }    */
       nav .link-current { @apply bg-wu-text text-wu-nav }
 
       .noscrollbar {
