@@ -23,14 +23,14 @@
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.3.0",
     "install": "^0.13.0",
-    "npm": "^8.17.0",
+    "npm": "^9.6.0",
     "postcss": "^8.4.16",
-    "postcss-import": "^14.0.2",
+    "postcss-import": "^15.1.0",
     "postcss-preset-env": "^7.7.2",
     "smoothscroll-polyfill": "^0.4.4",
     "tailwindcss": "^3.2.7",
     "tailwindcss-scroll-snap": "^1.1.0",
     "webpack": "^5.50.0",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^5.0.1"
   }
 }

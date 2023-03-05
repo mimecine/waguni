@@ -1,8 +1,8 @@
 <!-- <div class="absolute top-0 h-screen w-screen bg-red-200 z-[100]" >
-  <img src="{{'wagner_splash.jpg'| asset_img_url: 'original'}}" class="object-fill">
+  <img src="{{ 'wagner_splash.jpg' | asset_img_url: 'original' }}" class="object-fill">
 </div> -->
 <section class="grid md:grid-cols-3 gap-0">
-  {% for product in collections.frontpage.products limit:48 %}
+  {% for product in collections.frontpage.products limit: 48 %}
     {% assign remainder = forloop.length | modulo: 3 %}
     <div class="grid bg-wu-gray relative group">
   
@@ -20,11 +20,11 @@
       %}
   
       <a href="{{ product.url | within: collection }}" class="w-full block relative">
-        <div class="aspect-h-1 aspect-w-1 tag-{{product.tags | join: ' tag-'}}">
-          <img class="object-cover object-center p-0" src="{{ theimage.src | img_url: '1024x1024' }}" alt="{{ theimage.alt | escape }}" loading="lazy">
+        <div class="aspect-h-1 aspect-w-1 tag-{{ product.tags | join: ' tag-' }}">
+          <img class="object-cover object-center p-0" src="{{ theimage.src | image_url: width: 1024, height: 1024 }}" alt="{{ theimage.alt | escape }}" loading="lazy">
         </div>
       </a>
-      <a class="md:opacity-0 group-hover:opacity-100 text-gray-50 font-bold text-center absolute w-full bottom-0 p-4 block contrast-{{product.tags | join: ' contrast-'}}" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+      <a class="md:opacity-0 group-hover:opacity-100 text-gray-50 font-bold text-center absolute w-full bottom-0 p-4 block contrast-{{ product.tags | join: ' contrast-' }}" href="{{ product.url | within: collection }}">{{ product.title }}</a>
   
     </div>
   {% endfor %}
