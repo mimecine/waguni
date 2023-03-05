@@ -79,13 +79,11 @@
 
           {{ front_image | image_url: width: 800, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
-          widths: '400, 800, 1200',
           class: 'block opacity-0 md:group-hover:hidden object-cover xp-0 transition-opacity duration-1000', 
           loading: 'lazy',
           onload: 'this.classList.remove("opacity-0")'}}
           {{ hover_image | image_url: width: 800, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
-          widths: '400, 800, 1200',
           class: 'opacity-0 hidden md:group-hover:block object-cover xp-0', 
           onload: 'this.classList.remove("opacity-0")',
           preload: true }}

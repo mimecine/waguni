@@ -11,7 +11,7 @@
     <link rel="prefetch" href="{{ link.url }}">
   {% endfor %}
   {% if settings.favicon %}
-  <link rel="shortcut icon" href="{{ settings.favicon | img_url }}">
+  <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 100, height: 100 }}">
   {% endif %}
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <style>
@@ -38,14 +38,22 @@
 </script>
 </head>
 
-<body class="template-{{template.name}} suffix-{{template.suffix}} tag-{{product.tags | join: ' tag-'}} min-h-screen grid grid-pancake font-sans">
-  {% render 'header' %}
+<body class="template-{{ template.name }} suffix-{{ template.suffix }} tag-{{ product.tags | join: ' tag-' }} min-h-screen grid grid-pancake font-sans">
+  {% liquid
+    unless template.name == "index"
+      render 'header' 
+    endunless
+  %}
   <main role="main" class="bg-wu-gray w-full h-full">
     {{ content_for_layout }}
   </main>
 
-  {% render 'footer' %}
-  {% render 'cart-slideout' %}
-  {% render 'svg-defs' %}
+  {% liquid
+    unless template.name == "index"
+      render 'footer'
+      render 'cart-slideout' 
+      render 'svg-defs' 
+    endunless
+  %}
   </body>
 </html>

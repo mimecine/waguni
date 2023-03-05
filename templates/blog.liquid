@@ -5,7 +5,7 @@
     <div class="p-[20px] md:p-[40px]">
       <h1 class="uppercase text-[30px] tracking-[0.2em] pb-2">{{ pages[blog.handle].title }}</h1>
       <div class="blog-description font-serif text-[27px] lg:text-[40px] leading-[35px] md:leading-[48px] space-y-4">
-      {% if pages[blog.handle]%}{{ pages[blog.handle].content | | remove: '<meta charset="utf-8">'}}{% endif %}
+      {% if pages[blog.handle] %}{{ pages[blog.handle].content | | remove: '<meta charset="utf-8">' }}{% endif %}
       </div>
     </div>
     <div class="bg-wu-red aspect-h-3 aspect-w-3">
@@ -24,8 +24,8 @@
 {% for article in blog.articles | sort: 'published_at' %}
   {% assign article_content_test = article.content | strip_html | replace: '&nbsp;', '' | strip %}
   {% if article_content_test == '' and article.image %} 
-  {% comment%} IMAGE ONLY {% endcomment %}
-  <article class="border-t border-wu-nav grid  {%if article.image %} sm:grid-cols-3 {% endif%}">
+  {% comment %} IMAGE ONLY {% endcomment %}
+  <article class="border-t border-wu-nav grid  {% if article.image %} sm:grid-cols-3 {% endif %}">
     <div class="w-full aspect-w-2 aspect-h-1 col-span-3">
       {{ article 
         | image_url: width: 1600
@@ -36,25 +36,25 @@
           onload: 'this.classList.remove("opacity-0")'
       }}
 
-      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
+      <img class="object-cover w-full" src="{{ article.image.src | image_url: height: 1600 }}">
     </div>
   </article> 
   {% else %}
 
-  <article class="border-t border-wu-nav grid  {%if article.image %} md:grid-cols-3 {% endif%}">
+  <article class="border-t border-wu-nav grid  {% if article.image %} md:grid-cols-3 {% endif %}">
     {% if article.image %}
     <div class="w-full aspect-w-2 aspect-h-1 col-span-2">
-      <img class="object-cover w-full" src="{{ article.image.src | img_url: 'x1600' }}">
+      <img class="object-cover w-full" src="{{ article.image.src | image_url: height: 1600 }}">
     </div>
     {% endif %}
     <div class="content p-[20px] md:p-[40px] min-h-[30vh]">
       <h2 class="text-[30px] tracking-[0.2em] uppercase pb-2">{{ article.title }}</h2>
-      <div class="font-serif text-[16px] lg:text-[18px] leading-[23px] md:leading-[27px] space-y-4 {%unless article.image%} md:columns-3 md:column-auto{% endunless%}"  style="column-fill: auto;">
-        {{article.content | remove: '<meta charset="utf-8">'}}
+      <div class="font-serif text-[16px] lg:text-[18px] leading-[23px] md:leading-[27px] space-y-4 {% unless article.image %} md:columns-3 md:column-auto{% endunless %}"  style="column-fill: auto;">
+        {{ article.content | remove: '<meta charset="utf-8">' }}
       </div>
     </div>
   </article>
-  {%endif%}
+  {% endif %}
 {% endfor %}
 
 {% if paginate.pages > 1 %}
