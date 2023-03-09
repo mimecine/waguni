@@ -912,14 +912,6 @@ footer {
   top: calc(50% - 1.25rem);
 }
 
-.left-\[50\%-3rem\] {
-  left: 50%-3rem;
-}
-
-.top-\[calc\(100\%-1\.25rem\)\] {
-  top: calc(100% - 1.25rem);
-}
-
 .isolate {
   isolation: isolate;
 }
@@ -1667,15 +1659,6 @@ footer {
   background-color: var(--yellow,#FBCC03);
 }
 
-.bg-inherit {
-  background-color: inherit;
-}
-
-.bg-sky-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(14, 165, 233, var(--tw-bg-opacity));
-}
-
 .bg-opacity-100 {
   --tw-bg-opacity: 1;
 }
@@ -2186,11 +2169,6 @@ footer {
   color: var(--yellow,#FBCC03);
 }
 
-.text-sky-100 {
-  --tw-text-opacity: 1;
-  color: rgba(224, 242, 254, var(--tw-text-opacity));
-}
-
 .line-through {
   text-decoration-line: line-through;
 }
@@ -2229,10 +2207,6 @@ footer {
 
 .outline-2 {
   outline-width: 2px;
-}
-
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition {
@@ -2783,10 +2757,6 @@ input[type="radio"].hidden + label {
 
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
-}
-
-.data-\[state\=\'hidden\'\]\:hidden[data-state='hidden'] {
-  display: none;
 }
 
 @media (min-width: 640px) {

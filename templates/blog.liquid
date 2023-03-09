@@ -10,11 +10,11 @@
     </div>
     <div class="bg-wu-red aspect-h-3 aspect-w-3">
       {{ pages[blog.handle].metafields.custom.featured_image 
-        | image_url: width: 1200 , height: 1200, crop: 'center'
+        | image_url: width: 1600 , height: 1600, crop: 'center'
         | image_tag: 
           class: 'transition-opacity duration-300 opacity-0 object-cover w-full',
-          widths: '400, 800, 1200, 1600',
           sizes: '(min-width: 768px) 50vw, 100vw',
+          prefetch: true,
           onload: 'this.classList.remove("opacity-0")'
       }}
     </div>    
@@ -31,8 +31,8 @@
         | image_url: width: 1600
         | image_tag: 
           class: 'transition-opacity duration-300 opacity-0 object-cover w-full',
-          widths: '400, 800, 1200, 1600',
           sizes: '(min-width: 768px) 50vw, 100vw',
+          loading: 'lazy',
           onload: 'this.classList.remove("opacity-0")'
       }}
 
