@@ -96,7 +96,7 @@
     ]
   },
   {
-    "name": "Images",
+    "name": "Splashes",
     "settings": [
       {
         "label": "Fav Icon",
@@ -112,6 +112,16 @@
         "label": "Mobile Splash",
         "id": "mobile_splash",
         "type": "image_picker"
+      },
+      {
+        "label": "Splash Desktop Video",
+        "id": "splash_mobile_desktop",
+        "type": "video"
+      },
+      {
+        "label": "Splash Mobile Video",
+        "id": "splash_mobile_video",
+        "type": "video"
       }
     ]
   }
