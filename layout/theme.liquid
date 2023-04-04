@@ -24,9 +24,10 @@
   {{ 'application.js' | asset_url | script_tag }}
   {{ 'theme-cart.js' | asset_url | script_tag }}
   {{ 'smoothscroll.min.js' | asset_url | script_tag }}
+  {{ 'alpinejs.cdn.min.js' | asset_url | script_tag }}
   
-  <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  {% comment %} <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> {% endcomment %}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GNZJH3YQV"></script>
 <script>

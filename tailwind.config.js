@@ -24,6 +24,7 @@ module.exports = {
         'wu-denim-alt':'var(--denim-alt,#2F31B5)',
         'wu-yellow':'var(--yellow,#FBCC03)',
         'wu-turquoise':'var(--turquoise,#00A0F8)',
+        'wu-crimson':'var(--crimson,rgb(124,51,97))',
         'wu-brown':'var(--brown,#D6C8AB)',
         'wu-gray':'var(--gray,#BBBBBB)',
         'wu-white':'var(--white,#FFFFFF)',

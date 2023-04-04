@@ -1,4 +1,4 @@
-<section class="grid md:grid-cols-3 2xl:grid-cols-4 m-auto gap-[2px] bg-wu-white">
+<section class="grid md:grid-cols-4 m-auto gap-[2px] bg-wu-white">
   {% for product in collection.products limit: 48 %}
     {% assign remainder = forloop.length | modulo: 3 %}
     {% assign base_col = product.handle | split: "-" | last %}
@@ -77,12 +77,12 @@
         <div class="w-full aspect-w-4 aspect-h-5 ">
           <div class="block w-100 h-100 absolute top-0 left-0 border border-white {{bgclass}} animate-pulse duration-100"> </div>
 
-          {{ front_image | image_url: width: 800, crop: 'center' | image_tag: 
+          {{ front_image | image_url: width: 1200, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
           class: 'block opacity-0 md:group-hover:hidden object-cover xp-0 transition-opacity duration-1000', 
           loading: 'lazy',
           onload: 'this.classList.remove("opacity-0")'}}
-          {{ hover_image | image_url: width: 800, crop: 'center' | image_tag: 
+          {{ hover_image | image_url: width: 1200, crop: 'center' | image_tag: 
           sizes: '(min-width: 768px) 33vw, (min-width: 1536px) 25vw, 100vw', 
           class: 'opacity-0 hidden md:group-hover:block object-cover xp-0', 
           onload: 'this.classList.remove("opacity-0")',
