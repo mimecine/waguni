@@ -1055,10 +1055,6 @@ footer {
   display: grid;
 }
 
-.contents {
-  display: contents;
-}
-
 .hidden {
   display: none;
 }
@@ -1937,10 +1933,6 @@ footer {
   text-transform: capitalize;
 }
 
-.italic {
-  font-style: italic;
-}
-
 .leading-7 {
   line-height: 1.75rem;
 }
@@ -2077,10 +2069,6 @@ footer {
 .text-wu-yellow {
   color: #FBCC03;
   color: var(--yellow,#FBCC03);
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .line-through {
