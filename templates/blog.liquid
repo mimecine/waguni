@@ -4,7 +4,7 @@
   <div class="grid sm:grid-cols-2">
     <div class="p-[20px] md:p-[40px]">
       <h1 class="uppercase text-[30px] tracking-[0.2em] pb-2">{{ pages[blog.handle].title }}</h1>
-      <div class="blog-description font-serif text-[27px] lg:text-[40px] leading-[35px] md:leading-[48px] space-y-4">
+      <div class="blog-description font-serif text-[16px] lg:text-[18px] leading-[23px] md:leading-[27px] space-y-4">
       {% if pages[blog.handle] %}{{ pages[blog.handle].content | | remove: '<meta charset="utf-8">' }}{% endif %}
       </div>
     </div>
